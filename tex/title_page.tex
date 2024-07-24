@@ -1,0 +1,154 @@
+\documentclass[numbers,webpdf,imaman]{ima-authoring-template}%
+
+\usepackage{latexsym}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{mathptmx}
+\usepackage{placeins}
+% \usepackage{fullpage}
+\usepackage[left=16mm, right=16mm, top=23mm, bottom=23mm]{geometry}
+%
+%****************************************************************************
+% AUTHOR: You may want to use some of these packages. (Optional)
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage{epsfig}
+
+\usepackage{caption}
+\usepackage{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{calc}
+\usetikzlibrary{shapes}
+
+% \usepackage[round]{natbib}
+% \usepackage[linesnumbered,lined,ruled,commentsnumbered]{algorithm2e}
+
+\newcommand{\specialcellr}[2][r]{%
+  \begin{tabular}[#1]{@{}r@{}}#2\end{tabular}}
+
+%****************************************************************************
+
+
+%
+%****************************************************************************
+% AUTHOR: If you do not wish to use hyperlinks, then just comment
+% out the hyperref usepackage commands below.
+
+%% This version of the command is used if you use pdflatex. In this case you
+%% cannot use ps or eps files for graphics, but pdf, jpeg, png etc are fine.
+
+% \usepackage[
+%   colorlinks=true,
+%   urlcolor=blue,
+%   citecolor=black,
+%   anchorcolor=black,
+%   linkcolor=black,
+% ]{hyperref}
+% \usepackage{xurl}
+
+%% The next versions of the hyperref command are used if you adopt the
+%% outdated latex-dvips-ps2pdf route in generating your pdf file. In
+%% this case you can use ps or eps files for graphics, but not pdf, jpeg, png etc.
+%% However, the final pdf file should embed all fonts required which means that you have to use file
+%% formats which can embed fonts. Please note that the final PDF file will not be generated on your computer!
+
+
+%%\usepackage[dvips,colorlinks=true,urlcolor=blue,citecolor=black,%
+%% anchorcolor=black,linkcolor=black]{hyperref}
+%****************************************************************************
+
+
+%
+%****************************************************************************
+%*
+%* AUTHOR: YOUR CALL!  Document-specific macros can come here.
+%*
+\setcitestyle{authoryear,open={(},close={)}} %Citation-related commands
+%****************************************************************************
+% Packages added manually
+\usepackage{xcolor}
+\usepackage{multirow}
+%#########################################################
+%*
+%*  The Document.
+%*
+\begin{document}
+
+\DOI{DOI HERE}
+\copyrightyear{2023}
+\vol{00}
+\pubyear{2024}
+\access{Advance Access Publication Date: Day Month Year}
+\appnotes{Paper}
+\copyrightstatement{Published by Oxford University Press on behalf of the Institute of Mathematics and its Applications. All rights reserved.}
+\firstpage{1}
+
+\title[Optimising Heterogeneous Ambulance Fleet Allocations in Jakarta]{Optimising Heterogeneous Ambulance Fleet Allocations in Jakarta}
+
+
+\author{
+Geraint Ian Palmer*, Mark Tuson, Vincent Knight, Paul Harper, and Sarie Brice
+\address{
+    \orgdiv{School of Mathematics},
+    \orgname{Cardiff University},
+    \orgaddress{\street{Abacws},
+    \postcode{CF24 4AG},
+    \state{Cardiff, Wales},
+    \country{United Kingdom}
+}}}
+\author{Leanne Smith
+\address{
+    \orgname{Welsh Ambulance Services NHS Trust},
+    \orgaddress{\street{Beacon House},
+    \postcode{NP44 3AB},
+    \state{Cwmbran, Wales},
+    \country{United Kingdom}
+}}}
+\author{Daniel Gartner
+\address{
+    \orgname{Aneurin Bevan University Health Board},
+    \orgaddress{\street{Lodge Road},
+    \postcode{NP18 3XQ},
+    \state{Caerleon, Wales},
+    \country{United Kingdom}
+}}}
+
+
+\corresp[*]{Corresponding author: \href{email:palmergi1@cardiff.ac.uk}{palmergi1@cardiff.ac.uk}}
+
+\received{Date}{0}{Year}
+\revised{Date}{0}{Year}
+\accepted{Date}{0}{Year}
+
+\abstract{Ambulance services have a duty of care to the clinical outcomes of the
+population they serve, and therefore aim to maximise the chances of survival and
+improve patient outcomes following a medical emergency. Despite this, although
+the ambulance allocation problem has been widely studied, it has predominantly
+focused on minimising response times or maximising coverage alone, and not
+explicitly for considering patient outcomes. In this paper we propose a
+modelling approach to consider where to best allocate different types of
+emergency response vehicles in order to maximise patient outcomes within a
+heterogeneous population. To achieve this, we develop a metaheuristic algorithm
+for finding better fleet allocations which is used in conjunction with a
+discrete-event simulation model of ambulance services with heterogeneous
+vehicles. A major contribution of this metaheuristic is the numerical solution
+of a system of equations to approximate the utilisation of vehicles.
+Traditionally this utilisation is problematic as it is both an input and an
+output of the allocation of vehicles. Our approach is informed by, and tested
+on, real-world data from Jakarta, Indonesia. Using our developed models,
+decision makers are better able to understand ambulance fleet capacity needs and
+allocations, and their impact on patient outcomes.}
+
+\keywords{Ambulance Planning; Emergency Medical Services; Simulation;
+Health Care; Optimisation; Mathematical Modelling}
+
+
+\maketitle
+
+\end{document}
