@@ -391,7 +391,7 @@ location $a$. Also let:
         re-fuelling, re-stocking, and resting between transit jobs;
   \item $q_{pky}$ be the probability that a patient of speciality $k$ from
         pick-up location $p$ is taken to hospital $y$.
-        Note that $\sum_{y \in \mathcal{Y}} q_{pky} < 1$ is possible, that is a
+        Note that \textcolor{red}{having} $\sum_{y \in \mathcal{Y}} q_{pky} < 1$ is possible, that is a
         patient may not go to any hospital, in which case the ambulance returns
         to their ambulance location.
 \end{itemize}
@@ -410,7 +410,7 @@ Otherwise, a central control centre will dispatch the closest available primary
 vehicle. That vehicle will travel from its location to the patient ($B_{pa}$),
 spend some time on the scene treating the patient ($G_k$), travel to the
 hospital ($C_{py}$), spend some time handing over the patient at the hospital
-($J_k$), travel back to it's original location ($D_{ya}$), then spend time
+($J_k$), travel back to its original location ($D_{ya}$), then spend time
 refilling and refuelling ($\Theta$).
 There is also a probability that the patient does not need a hospital, and so
 the vehicle will travel from the pick-up location back to it's original vehicle
@@ -515,7 +515,7 @@ appropriately summing these survival curves, described in
 Section~\ref{sec:survival}, across the population, multiplying by ambulance
 availability where appropriate.
 \textcolor{red}{The full MESLMHPHF optimisation model is given in
-Appendix~\ref{apx:fullmodel}, and its components are described fully here.}
+APPENDIX~\ref{apx:fullmodel}, and its components are described fully here.}
 The MESLMHPHF is given by Equation~\ref{eqn:meslmhphf}.
 
 \begin{equation}\label{eqn:meslmhphf}
@@ -597,7 +597,20 @@ part of the sum repeating the logic for the faster secondary vehicles, and the
 second part of the sum adapting that logic for primary vehicles, who will only
 be contribute the patient's survival if all faster secondary vehicles are also
 busy. These interpretations are given as annotations to the equations
-in~\ref{apx:annotated}.
+in~\textcolor{red}{APPENDIX}\ref{apx:annotated}.
+
+\textcolor{red}{Note that in Equations~\ref{eqn:survival_A}
+and~\ref{eqn:survival_B}, the survival functions used, $s_k(t)$, are the same
+whether a primary or a secondary vehicle arrives first. This may be unrealistic,
+where primary vehicles may be better equipped than secondary vehicles to deal
+with some emergencies. One option to overcome this would be to have distinct
+survival functions for each vehicle type, however there may be some interactions
+between the survival probability functions that would not be captured, for
+example when a primary vehicle arrives after a secondary vehicle, there may
+still be a better chance of survival that the secondary vehicle only. This would
+be an interesting avenue of further research. For this work, survival functions
+will be the same for all vehicles, representing the probability of surviving
+given time to be seen by any emergency vehicle.}
 
 A key consideration is the vehicle utilisations $\pi_a$ and $\tilde{\pi}_a$;
 discussed in the next subsection.
@@ -648,8 +661,8 @@ location-dependent service rates would be an interesting further research
 question, potentially improving the model's performance by incorporating travel
 times into the MESLMHPHF. However, given that in the case of Jakarta the
 preferences $\beta_{p a_1 a_2}$ and $R_{p a_1 a_2}$ are themselves defined by
-travel times (Equations~\ref{eqn:beta} and~\ref{eqn:R}), this may not have much
-affect for this study, \textcolor{red}{as the model already gives preference to
+travel times (Equations~\ref{eqn:beta} and~\ref{eqn:R}), this \textcolor{red}{might not have a strong impact on the results of \st{may not have much
+affect for}} this study, \textcolor{red}{as the model already gives preference to
 the locations with the shortest service times.}
 
 \begin{figure}
@@ -934,14 +947,14 @@ adaptations.
 
 This is possible as there are no synchronicity issues between the two
 components. Primary vehicles operate independently of secondary vehicles, that
-is the way primary vehicles respond to a patient is unaffected by the presence
+is\textcolor{red}{,} the way primary vehicles respond to a patient is unaffected by the presence
 or lack of a secondary vehicle.
 Therefore, primary vehicle logic is not compromised by simulating primary
 vehicles in isolation.
 Secondary vehicles are impacted by the behaviour of primary vehicles, they
 must remain with the patient until the primary vehicle arrives, and so must be
 simulated after the simulation of primary vehicles, taking as inputs the exact
-list of events that occurred. That is the logic of the secondary vehicles is
+list of events that occurred. That is\textcolor{red}{,} the logic of the secondary vehicles is
 determined by observing the actions of primary vehicles and reacting to them.
 Simulation results are combined for each individual patient, to determine
 their response time caused by either primary or secondary vehicles.
@@ -1112,7 +1125,7 @@ neighbourhoods from 1 January to 31 December 2019, before the COVID-19
 pandemic. Data from 2020-2021 was naturally heavily skewed by the pandemic,
 with significantly lower demand, and so was not considered as representative
 of a typical period for forecasting future needs, hence the decision to use
-the available 2019 demand. \ref{apx:parameters} provides further details on the
+the available 2019 demand. \textcolor{red}{APPENDIX}~\ref{apx:parameters} provides further details on the
 parameterisation of the model, including how travel time estimates were
 obtained.
 
@@ -1249,7 +1262,7 @@ the four scenarios described in Section~\ref{sec:demand_scenarios}. The
 hyper-parameters used for this optimisation algorithm throughout this study are
 given in Table~\ref{tbl:hyperparameters}, which include approximations for the
 average service times of primary and secondary vehicles derived from the initial
-simulation model. \ref{apx:hyperparameters} shows some initial explorations on
+simulation model. \textcolor{red}{APPENDIX}~\ref{apx:hyperparameters} shows some initial explorations on
 the hyper-parameter choices, giving confidence that the chosen parameters, with
 a large enough number of iterations $N$, are sufficient to find allocations
 that perform well.

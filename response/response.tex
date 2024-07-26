@@ -161,6 +161,7 @@ This has now been added to the discussion section.
 \begin{quote}
 ``Is the survival function the same for $K_a$ patients regardless of which vehicle visits them? What is the rationale for this? It seems that primary vehicles would be better prepared to deal with complications, etc.''
 \end{quote}
+This is an interesting suggestion. Currently we model the survival function to be independent of the vehicle type, that is $s_k$ is the same regardless if the vehicle that arrived is a primary or secondary vehicle. As you note, this may not be realistic, and we may want to be able to model situations where there are different survival functions for each vehicle type. However, this becomes more complicated when both vehicles arrive, but at different times - there will be an interaction between the functions that requires more investigation and is beyond the scope of this study. These scenarios are interesting, and we have added a sentence in the paper explaining this as further work.
 
 \item Reviewer 2 wrote:
 \begin{quote}
@@ -196,16 +197,19 @@ This has now been added to the discussion section.
 \begin{quote}
 ``P4 L34 – Note that IF .... it is possible''
 \end{quote}
+I believe the fix should be ``Note that having .... is possible''.
 
 \item Reviewer 2 wrote:
 \begin{quote}
 ``P4 L41-42 – Travel back to ITS (not it’s)''
 \end{quote}
+Fixed.
 
 \item Reviewer 2 wrote:
 \begin{quote}
 ``P7 L29 – equations in APPENDIX A.''
 \end{quote}
+Fixed throughout.
 
 \item Reviewer 2 wrote:
 \begin{quote}
@@ -216,16 +220,19 @@ This has now been added to the discussion section.
 \begin{quote}
 ``P8 L27 – change ending to – This might not have a strong impact on the results of this study.''
 \end{quote}
+Fixed.
 
 \item Reviewer 2 wrote:
 \begin{quote}
 ``P8 L49 – In addition to the package used, can you more explicitly state what optimisation problem was solved here, and by which method?''
 \end{quote}
+Section 4.4 explains this, it is not an optimisation problem. We solve equations 13 and 14, that is we find values of $\lambda_a$ and $\tilde{\lambda}_a$ such that those equations are satisfied. These equations are non-linear and so the values are found using the MINPACK hybrd and hybrj algorithms, implemented in Scipy.
 
 \item Reviewer 2 wrote:
 \begin{quote}
 ``P12 L26,27 Rewrite, possible a comma is missing there, also L32.''
 \end{quote}
+Fixed.
 
 \end{itemize}
 
