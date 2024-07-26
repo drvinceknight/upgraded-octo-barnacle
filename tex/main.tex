@@ -1,5 +1,6 @@
 \documentclass[numbers,webpdf,imaman]{ima-authoring-template}%
 
+\usepackage{soul}
 \usepackage{latexsym}
 \usepackage{subcaption}
 \usepackage{graphicx}
@@ -171,7 +172,7 @@ treatment is especially vital.
 The application of our research is focused on Indonesia, supported by an
 award for Global Challenges Research Funds (GCRF). In Indonesia, an LMIC,
 there has been very little prior work on developing an EMS strategy, driven
-by inadequate a lack of financial investment and human capital
+by \textcolor{red}{\st{inadequate}} a lack of financial investment and human capital
 \citep{plummer2017ems,pusponegoro2003terrorism,yusvirazi2018state}.
 Related research by the authors \citep{BriceSyaribahNoor2022Esui} has
 highlighted particular challenges in Indonesia as a lack of a single
@@ -435,7 +436,7 @@ service time $T_{pak}$ given by Equation~\ref{eqn:service_time_nohosp} if no
 hospital is required.
 
 \begin{align}
-T_{paky} &= B_{pa} + G_k + C_{py} + J_{yk} + D_{ya} + \Theta \label{eqn:service_time_withhosp} \\
+T_{paky} &= B_{pa} + G_k + C_{py} + J_k + D_{ya} + \Theta \label{eqn:service_time_withhosp} \\
 T_{pak} &= B_{pa} + G_k + F_{pa} + \Theta \label{eqn:service_time_nohosp}
 \end{align}
 
@@ -513,6 +514,8 @@ vehicles, EAs, and secondary vehicles, RRVs), and is constructed by
 appropriately summing these survival curves, described in
 Section~\ref{sec:survival}, across the population, multiplying by ambulance
 availability where appropriate.
+\textcolor{red}{The full MESLMHPHF optimisation model is given in
+Appendix~\ref{apx:fullmodel}, and its components are described fully here.}
 The MESLMHPHF is given by Equation~\ref{eqn:meslmhphf}.
 
 \begin{equation}\label{eqn:meslmhphf}
@@ -557,21 +560,23 @@ and~\ref{eqn:survival_B} respectively.
 \left(1 - R _{p a\alpha}\right)\right)}
 \end{align}
 
-Here $R_{p a_1 a_2}$ and $\beta_{p a_1 a_2}$ are binary variables indicating
-the preference of sending a vehicle from one station to another, that is the
-dispatch rule. Here we use the closest or fastest vehicle, so
-$\beta_{p a_1 a_2}$ indicates if a vehicle of the same type can reach $p$
-quicker from $a_1$ than $a_2$, defined in Equation~\ref{eqn:beta}, while
-$R_{p a_1 a_2}$ indicates if a primary vehicle at $a_1$ can reach $p$ quicker
-than a secondary vehicle at $a_2$, defined in Equation~\ref{eqn:R}. Note that
-here these parameters are defined using travel times, but can be generalised to
-account for any type of preference, including for example proximity, importance,
-or efficiency.
+Here $R_{p a_1 a_2}$ and $\beta_{p a_1 a_2}$ \textcolor{red}{define an ordering
+of the ambulance locations, they} are binary variables indicating the preference
+of sending a vehicle from one station to another, that is the dispatch rule.
+Here we use the closest or fastest vehicle, so $\beta_{p a_1 a_2}$ indicates if
+a vehicle of the same type can reach $p$ quicker from $a_1$ than $a_2$, defined
+in Equation~\ref{eqn:beta}, while $R_{p a_1 a_2}$ indicates if a primary vehicle
+at $a_1$ can reach $p$ quicker than a secondary vehicle at $a_2$, defined in
+Equation~\ref{eqn:R}. \textcolor{red}{In order for these to define an ordering
+it is assumed that no two distinct ambulance locations are exactly equidistant
+from a pickup location.} Note that here these parameters are defined using
+travel times, but can be generalised to account for any type of preference,
+including for example proximity, importance, or efficiency.
 
 \begin{equation}\label{eqn:beta}
 \beta_{p a_1 a_2} = \begin{cases}
     0 & \text{if } a_1 = a_2\\
-    1 & \text{if } b_{p a_1} \leq b_{p a_2}\\
+    1 & \text{if } b_{p a_1} < b_{p a_2}\\
     0 & \text{otherwise.}
 \end{cases}
 \end{equation}
@@ -620,7 +625,7 @@ location $a$, although this may be unrealistic, given that the travel between
 locations are a key part of a vehicle's job time ($B_{pa}$, $D_{ya}$, $F_{pa}$).
 However, as discussed in Section~\ref{sec:problem_description}, there are a
 number of other components to an ambulance job including time on site ($G_k$),
-hospital handover time ($J_{yk}$), and vehicle refill time ($\Theta$). For the
+hospital handover time ($J_k$), and vehicle refill time ($\Theta$). For the
 case of Jakarta, we justify the assumption of job times not being location
 dependent by considering the proportion of an ambulance job's time that is
 location dependent, $\rho$, defined in
@@ -644,7 +649,8 @@ question, potentially improving the model's performance by incorporating travel
 times into the MESLMHPHF. However, given that in the case of Jakarta the
 preferences $\beta_{p a_1 a_2}$ and $R_{p a_1 a_2}$ are themselves defined by
 travel times (Equations~\ref{eqn:beta} and~\ref{eqn:R}), this may not have much
-affect for this study.
+affect for this study, \textcolor{red}{as the model already gives preference to
+the locations with the shortest service times.}
 
 \begin{figure}
     \centering
@@ -740,7 +746,7 @@ generations. The metaheuristic is described in Algorithm~\ref{alg:heuristic}.
 \begin{algorithmic}[1]
 \State Create a population of $N$ random allocations ($Z_a$, $\tilde{Z}_a$)\;
 \For{$i \leftarrow 0$ \algorithmicto $H$}
-  \State Rank the population according to Equation~\ref{eqn:meslmhphf}\;
+  \State Rank the population \textcolor{red}{by decreasing expected survival} according to Equation~\ref{eqn:meslmhphf}\;
   \State Keep the top $\kappa$ solutions\;
   \State $m \leftarrow \lceil m_0 - \max\left(m_0, i \times c\right)\rceil$\;
   \For{$j \leftarrow 0$ \algorithmicto $N - \kappa$}
@@ -820,7 +826,7 @@ That is $T_{paky}$ and $T_{pak}$ is the overall time the ambulance spends
 dealing with that transit job and is unavailable to receive any more transit
 jobs.
 
-From a patient's point of view their service only lasts $G_k + C_{py} + J_{yk}$,
+From a patient's point of view their service only lasts $G_k + C_{py} + J_k$,
 (or $G_k$ if no hospital is required), and their waiting time is $B_{pa}$ plus
 the time waiting for an ambulance to be dispatched. However in our case, if
 there are no free ambulances at the time of call, it is assumed that patients
@@ -1335,7 +1341,7 @@ increasing the demand of emergency calls has a negative impact on all KPIs.
 \label{fig:results_objective_multiple}
 \end{subfigure}
 \end{center}
-\caption{MESLMHPHF objective expected survival results.}
+\caption{MESLMHPHF objective expected survival results. \textcolor{red}{(Note that Figures~\ref{fig:results_objective_single} and~\ref{fig:results_objective_multiple} do not have the same y-axis scale in order to keep the data points visible.)}}
 \label{fig:results_objective}
 \end{figure}
 
@@ -1421,6 +1427,7 @@ increases ambulance utilisation, and so decreases availability, resulting in
 an increase in abandoned calls. However, introducing secondary vehicles also
 results in a decrease in the mean response time, and a large increase in the
 expected survival, especially those of speciality A1.
+\textcolor{red}{In fact, it can be seen from Figure~\ref{fig:results_a1survival_multiple} that when using multiple vehicle types the survival of A1 patients plateaus as the resource level increases, indicating that the system has reached an upper bound on the survival of A1 patients. This is corroborated by considering the survival function of A1 patients given in Equation~\ref{eqn:survival_curve}, where even if all patients were seen immediately a survival of 43.5\% would be expected, and so accounting for even a minimum travel time to the patients an observed plateau value of 32\% could not be improved upon by adding more resource level.}
 
 An interesting phenomenon occurs when looking at
 Figure~\ref{fig:results_response_multiple}. Here it seems that, when using
@@ -1512,7 +1519,12 @@ motorbikes is very important, given RRVs can access areas that cannot easily
 or quickly be accessed by ambulances. Results from both the optimisation and
 simulation research showed that the RRVs can help increase the overall
 survival and reduce the response times, especially crucial when responding to
-life threatening events such as cardiac arrests \citep{holmen2020shortening}. 
+life threatening events such as cardiac arrests \citep{holmen2020shortening}.
+\textcolor{red}{In building the models, some assumptions or relaxations were
+made to simplify the model, and future work should investigate the effects of
+these, for example the assumption that service times are not location dependent
+is unrealistic, but relaxed here. Further developments of the model could
+consider explicitly modelling service rates using the travel time matrices.}
 
 The results of our research also suggest that allocation strategies may not be
 intuitive to ambulance service managers, further emphasising the value of a
@@ -1594,6 +1606,46 @@ Dr Winarto, Head of the 119 Ambulance Service in Jakarta.
 \includegraphics[width=\textwidth]{img/annotate}
 
 \newpage
+
+\textcolor{red}{
+\section{Full MESLMHPHF Optimisation Model}\label{apx:fullmodel}
+Decision variables: $Z_a$, $\tilde{Z}_a$,
+Maximise:
+\begin{equation*}
+g\left(Z_a, \tilde{Z}_a\right) =
+\sum_{p \in \mathcal{P}} \sum_{a \in \mathcal{A}}
+\left( \sum_{k \in \mathcal{K}_A}  w_k \lambda_{pk} \hat{\Psi}_{kpa} +
+\sum_{k \in \mathcal{K}_B}  w_k \lambda_{pk} \Psi_{kpa} \right)
+\end{equation*}
+where
+\begin{equation*}
+\Psi_{kpa} = s_k\left( b_{pa} \right)
+\left(1 - \pi_{a}^{Z_a} \right)
+\prod_{\alpha \in \mathcal{A}}
+\pi_{\alpha}^{\left(Z_{\alpha} \beta_{p\alpha a} \right)}
+\end{equation*}
+and
+\begin{align*}
+\hat{\Psi}_{kpa} &= s_k\left(\tilde{b}_{pa}\right)
+\left(1 - \tilde{\pi}_{a}^{\tilde{Z}_a} \right)
+\prod_{\alpha \in \mathcal{A}}
+\tilde{\pi}_{\alpha}^{\left(\tilde{Z}_{\alpha} \beta_{p\alpha a}\right)}
+\pi_{\alpha}^{\left(Z_{\alpha} R_{p \alpha a}\right) } \nonumber \\
+&+ s_k\left(b_{pa}\right) \left(1 - \pi_{a}^{Z_a} \right)
+\prod_{\alpha \in \mathcal{A}}
+\pi_{\alpha}^{\left(Z_{\alpha}\beta_{p\alpha a}\right)}
+\tilde{\pi}_{\alpha}^{\left(\tilde{Z}_{\alpha}
+\left(1 - R _{p a\alpha}\right)\right)}
+\end{align*}
+subject to
+\begin{equation*}
+Z_a, \tilde{Z}_a \in \mathbb{N_0}
+\end{equation*}
+\begin{equation*}
+Z_a + \frac{1}{3} \tilde{Z}_a = \mathcal{L}
+\end{equation*}
+where $\mathcal{L}$ is the resource level.
+}
 
 \section{Model Parameters}\label{apx:parameters}
 Call arrival rates $\lambda_{pk}$ are derived from 2019 demand data split by

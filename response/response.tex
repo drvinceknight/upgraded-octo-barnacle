@@ -1,0 +1,232 @@
+\documentclass{article}
+
+\usepackage{fullpage}
+\usepackage{parskip}
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{hyperref}
+
+\title{Responses to Reviewers}
+\author{}
+\date{}
+
+
+\begin{document}
+
+\maketitle
+
+We would like to express our gratitude to the editor, associate editor, and reviewers for facilitating the review process, and for their useful suggestions and remarks on the manuscript.
+
+This document will address the specific concerns raised.
+
+\section{Responses to the Editor}
+
+\begin{itemize}
+
+\item The editor wrote:
+\begin{quote}
+``Please cite relevant, recent work published in this journal. This is by no means mandatory, but it will help to position your work in the context of research published in the journal.''
+\end{quote}
+
+
+\item The editor wrote:
+\begin{quote}
+``The manuscript does not sufficiently discuss the managerial implications of the work. Please develop this further in your revision.''
+\end{quote}
+
+\end{itemize}
+
+
+\section{Responses to the Associate Editor}
+There were no comments by the associate editor. We would like to thank the associate editor for their work facilitating the review process.
+
+\section{Responses to the Reviewers}
+
+\subsection{Comments from Reviewer 1}
+
+\begin{itemize}
+
+\item Reviewer 1 wrote:
+\begin{quote}
+``No Verification \& Validation of the simulation model is described. At least some discussion regarding the validity of the model has to be included in the case study.''
+\end{quote}
+
+\item Reviewer 1 wrote:
+\begin{quote}
+``No measures of variance are given for the simulation results in Tables 1 and 4. Especially since repeated simulation results were conducted, measures of variance should be included to investigate the statistical significance of the results.''
+\end{quote}
+
+\item Reviewer 1 wrote:
+\begin{quote}
+``Algorithm 1: Updating the mutation rate m by subtracting the maximum of m0 and a second number from m0 will lead to a negative (or zero) mutation rate, which does not make sense. Probably should be min instead of max.''
+\end{quote}
+The algorithm is correct. Line 5 of the algorithm states that $m_0 \leftarrow \lceil m_0 - \max(m_0, i \times c) \rceil$. Without the ceiling function, this would have the effect of linearly decreasing wiht $i$ until 0, and then remaining at 0 thereafter. With the ceiling function, the linear part becomes a stepwise decent to 0, and then 0 thereafter.
+
+\item Reviewer 1 wrote:
+\begin{quote}
+``Unclear, why the subchapter 4.1 on survival functions is necessary, since traditional coverage targets are used in the case study and the model formulation does not depend on characteristics of the survival functions. While survival functions are an important performance metric in the reviewers opinion, it is not clear why the reader needs this information to follow the remainder of the paper.''
+\end{quote}
+We disagree with the reviewer here. In the case study, traditional targets such a mean response times are reported alongside survival measures, based on the survival functions. However, a key part of the paper is the optimisation process, and all scenarios compared are `optimised' scenarios that result from this process. The objective function of the optimisation process maximises survival, based on survival functions. This is evnidenced in Equations 6 and 7, which are component parts of the objective function given in Equation 5. Therefore the survival functions are central to the work presented.
+
+\item Reviewer 1 wrote:
+\begin{quote}
+``p. 8/9: A short explanation, of what the MINPACK hybrd and hybrj algorithms do and how they work should be included either directly or in the appendix.''
+\end{quote}
+
+\item Reviewer 1 wrote:
+\begin{quote}
+``There is no discussion of how well the proposed model estimates survival probabilities. This could be easily done by calculating the survival probabilites based on the simulated response times and comparing the simulated survival probabilities with the ones calculated by the MESLMHPHF. It is also not clear, why e.g. in Table 4 the expected Survival from the MESLMHPHF was used instead of the more realistic survival based on the simulation results.''
+\end{quote}
+
+\item Reviewer 1 wrote:
+\begin{quote}
+``Formulating the MESLMHPHF as an explicit optimization model with an objective function and constraints would make it easier to follow the model logic than it is with the separation of the formulation over multiple pages.''
+\end{quote}
+This has now been given as an Appendix, while the body of the paper presents the model in a way that explains and justifies each step.
+
+\item Reviewer 1 wrote:
+\begin{quote}
+``p.1 l. 37 ‘driven by inadequate a lack of financial investment and human capital’ (delete inadequate)''
+\end{quote}
+Fixed.
+
+\item Reviewer 1 wrote:
+\begin{quote}
+``p.5, l. 21: $J_{yk}$ was not defined, only $J_k$''
+\end{quote}
+Fixed, all instances should the $J_k$.
+
+\item Reviewer 1 wrote:
+\begin{quote}
+``Fig. 10: Both plots should have the same y-axis interval and ideally start
+at 0''
+\end{quote}
+The scale of Fig 10.b is so small that the lines would not be able to be differentiated if it had the same scale as Fig 10.a; and would be impossible to see at all if the y-axis starts at 0. Instead, we have included a sentence in the caption to note that the y-axes are different for both plots.
+
+\item Reviewer 1 wrote:
+\begin{quote}
+``Fig. 11: A1 survival does not increase monotonically, especially in the single vehicle type scenario. A discussion of possible causes for this counterintuitive result should be included.''
+\end{quote}
+Thank you for this comment. We have now added some sentences explaining this phenomenon, calling back to the behaviour of the survival function itself and arguing that this is an upper bound for the survival of A1 patients.
+
+\item Reviewer 1 wrote:
+\begin{quote}
+``Equations 8 and 9: It is stated, that $\beta_{p a_1 a_2}$ indicates, that a vehicle from a1 can reach p quicker, than a vehicle from a2. The equations 8 and 9 however use $\leq$ and not < , which is not consistent with the description.''
+\end{quote}
+Thank you for spotting this. As the $\beta_{p a_1 a_2}$ define an ordering of the ambulance locations, it does not matter whether they are defined by $\leq$ or <, as we assume that no two distinct ambulance locations are equidistant from a pickup location. We have now added this point to the text.
+
+\item Reviewer 1 wrote:
+\begin{quote}
+``p. 8, L.25-27: The reason why the fact that the preferences depending on the travel times should reduce the impact of including location specific service rates is not obvious and shuould be expanded on.''
+\end{quote}
+We have now added a sentence explaining this.
+
+\item Reviewer 1 wrote:
+\begin{quote}
+``Algorithm 1: Even though it is obvious that the solutions are very likely ranked by decreasing expected survival probability it should be stated clearly, how the population is ranked according to Equation 5.''
+\end{quote}
+Fixed.
+
+\item Reviewer 1 wrote:
+\begin{quote}
+``Table 4: The optimised solution shows (slightly) higher mean response times for scenarios D13 and D19. This should be discussed.''
+\end{quote}
+This is discussed directly in the paragraph discussing the table: ``It is worth noting that for the simulation based KPIs (mean response times and percent abandoned), there is not too much difference between the currently used allocation and the better allocation, showing that these KPIs may not be good approximations of survival.''
+
+\item Reviewer 1 wrote:
+\begin{quote}
+``The relaxation of the assumption of location independent service rates and and time-independent arrivale rates in the MESLMHPHF could be remarked upon in the outlook''
+\end{quote}
+This has now been added to the discussion section.
+
+\item Reviewer 1 wrote:
+\begin{quote}
+``Reframing subchapter 6.3 as e.g. demand scenario definition would help the reading flow''
+\end{quote}
+
+\end{itemize}
+
+\subsection{Comments from Reviewer 2}
+
+\begin{itemize}
+
+\item Reviewer 2 wrote:
+\begin{quote}
+``The introduction makes a case for using survival vs reponse time as a measure for ambulance allocation (although this is not the only measure in the results). What would this do to fairness in the allocations? Would far away patients with serious conditions (ie. Needing a fast response time) just be discarded as it is expensive to cater for them (in terms of overall survival of the population)?''
+\end{quote}
+
+\item Reviewer 2 wrote:
+\begin{quote}
+``Is the survival function the same for $K_a$ patients regardless of which vehicle visits them? What is the rationale for this? It seems that primary vehicles would be better prepared to deal with complications, etc.''
+\end{quote}
+
+\item Reviewer 2 wrote:
+\begin{quote}
+``Have you given any consideration to using an exact method to solve the optimisation problem solved in Algorithm 1? Is there any alternative in the literature?''
+\end{quote}
+
+\item Reviewer 2 wrote:
+\begin{quote}
+``P11 L43 – What is the rationale of using a triangular distribution for travel times? In general, what is the basis of all the travel time assumptions presented in this section?''
+\end{quote}
+
+\item Reviewer 2 wrote:
+\begin{quote}
+``P12 5.4 – For patients that might not need to travel to a hospital, would they still need a primary vehicle after a secondary vehicle tends to them? If not the logic would not be separate entirely.''
+\end{quote}
+
+\item Reviewer 2 wrote:
+\begin{quote}
+``It seems there are two conflicting methods here, the optmisiation with the EA, which uses some averages, etc. And a more comprehensive DES simulation; however the latter is not used for the optimisation. Did you consider simulation optimisation or simheuristics to address this?''
+\end{quote}
+
+\item Reviewer 2 wrote:
+\begin{quote}
+``P15 Paragraph starting L36. Can you give more detail on the modelling of the call arrival rates? For rare specialties, and given the low usage of ambulances in Indonesia, you might not have enough data to give an accurate representation of actual demand. Especially, for future demand where visibility is increased, how will this change for example among richer/poorer parts of the city? I acknowledge it is impossible to include everything in your experiments, but how do you expect these limitations might affect your results?''
+\end{quote}
+
+\item Reviewer 2 wrote:
+\begin{quote}
+``Could you conduct any validation of your results with real data from eg. Ambulance response times with the baseline allocation?''
+\end{quote}
+
+\item Reviewer 2 wrote:
+\begin{quote}
+``P4 L34 – Note that IF .... it is possible''
+\end{quote}
+
+\item Reviewer 2 wrote:
+\begin{quote}
+``P4 L41-42 – Travel back to ITS (not it’s)''
+\end{quote}
+
+\item Reviewer 2 wrote:
+\begin{quote}
+``P7 L29 – equations in APPENDIX A.''
+\end{quote}
+
+\item Reviewer 2 wrote:
+\begin{quote}
+``P8 Fig 3 – Include y axis scale''
+\end{quote}
+
+\item Reviewer 2 wrote:
+\begin{quote}
+``P8 L27 – change ending to – This might not have a strong impact on the results of this study.''
+\end{quote}
+
+\item Reviewer 2 wrote:
+\begin{quote}
+``P8 L49 – In addition to the package used, can you more explicitly state what optimisation problem was solved here, and by which method?''
+\end{quote}
+
+\item Reviewer 2 wrote:
+\begin{quote}
+``P12 L26,27 Rewrite, possible a comma is missing there, also L32.''
+\end{quote}
+
+\end{itemize}
+
+\end{document}
