@@ -241,6 +241,20 @@ the lives of those living in LMICs. This enables decision support and
 managerial insights in Indonesia, although the developed modelling framework
 could be readily applied to other locations.
 
+\textcolor{red}{There are several managerial implications for EMS providers and
+government agencies in Jakarta and Indonesia, respectively. The findings
+emphasise the importance of adopting a dynamic and data-driven approach to
+resource allocation. The inclusion of a heterogeneous fleet, such as Rapid
+Response Vehicles (RRVs) alongside traditional ambulances, has been shown to
+significantly improve response times and patient survival rates, particularly in
+densely populated urban areas. Managers are advised to invest in these diverse
+fleets and adopt flexible allocation strategies that account for temporal
+variations in demand, such as the daily influx of commuters and the differing
+population densities across neighbourhoods. The research underscores the
+necessity of enhancing data collection practices to support informed
+decision-making, with the development of user-friendly decision support tools to
+assist in visualising data and predicting outcomes}
+
 The paper is structured as follows:
 Section~\ref{sec:litreview} gives an overview of the literature on modelling
 ambulance allocations.
@@ -704,6 +718,7 @@ utilisations of the primary vehicles, $\pi_a$.
 \left(\tilde{Z}_{\alpha} \beta_{p \alpha a}\right)}
 \end{equation}
 
+
 We propose finding the true vehicle utilisations by first solving
 Equation~\ref{eqn:utilisations_primary} for the $\lambda_a$; determining the
 primary vehicle utilisations with Equation~\ref{eqn:utilisation_ratio_primary};
@@ -712,7 +727,7 @@ $\tilde{\lambda}_a$; and determining the secondary vehicle utilisations with
 Equation~\ref{eqn:utilisation_ratio_secondary}. These can be solved
 numerically. In our implementation this is solved using the MINPACK hybrd and
 hybrj algorithms by using Scipy's \texttt{fsolve} function
-\citep{2020SciPy-NMeth}. It should be noted that in this section we assume that
+\citep{2020SciPy-NMeth}. \textcolor{red}{These algorithms are efficient methods for finding zeros of systems of non-linear equations. They are based on the Powell hybrid method \cite{powell70}.} It should be noted that in this section we assume that
 all $\lambda_{pk}$ are static and not time-dependant, which is an assumption
 that will be used throughout the optimisation methodology, however in the
 simulation we can account for time-dependent demand.
@@ -761,7 +776,7 @@ generations. The metaheuristic is described in Algorithm~\ref{alg:heuristic}.
 \For{$i \leftarrow 0$ \algorithmicto $H$}
   \State Rank the population \textcolor{red}{by decreasing expected survival} according to Equation~\ref{eqn:meslmhphf}\;
   \State Keep the top $\kappa$ solutions\;
-  \State $m \leftarrow \lceil m_0 - \max\left(m_0, i \times c\right)\rceil$\;
+  \State $m \leftarrow \lceil m_0 - \min\left(m_0, i \times c\right)\rceil$\;
   \For{$j \leftarrow 0$ \algorithmicto $N - \kappa$}
     \State Randomly choose and copy a solution from the population\;
     \State Mutate that copy of the solution $m$ times\;

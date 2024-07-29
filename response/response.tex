@@ -35,6 +35,7 @@ This document will address the specific concerns raised.
 \begin{quote}
 ``The manuscript does not sufficiently discuss the managerial implications of the work. Please develop this further in your revision.''
 \end{quote}
+We have now included a paragraph on this in the introduction.
 
 \end{itemize}
 
@@ -62,7 +63,7 @@ There were no comments by the associate editor. We would like to thank the assoc
 \begin{quote}
 ``Algorithm 1: Updating the mutation rate m by subtracting the maximum of m0 and a second number from m0 will lead to a negative (or zero) mutation rate, which does not make sense. Probably should be min instead of max.''
 \end{quote}
-The algorithm is correct. Line 5 of the algorithm states that $m_0 \leftarrow \lceil m_0 - \max(m_0, i \times c) \rceil$. Without the ceiling function, this would have the effect of linearly decreasing wiht $i$ until 0, and then remaining at 0 thereafter. With the ceiling function, the linear part becomes a stepwise decent to 0, and then 0 thereafter.
+Thank you, this has now been fixed.
 
 \item Reviewer 1 wrote:
 \begin{quote}
@@ -74,6 +75,7 @@ We disagree with the reviewer here. In the case study, traditional targets such 
 \begin{quote}
 ``p. 8/9: A short explanation, of what the MINPACK hybrd and hybrj algorithms do and how they work should be included either directly or in the appendix.''
 \end{quote}
+We have now added this.
 
 \item Reviewer 1 wrote:
 \begin{quote}
@@ -226,7 +228,7 @@ Fixed.
 \begin{quote}
 ``P8 L49 – In addition to the package used, can you more explicitly state what optimisation problem was solved here, and by which method?''
 \end{quote}
-Section 4.4 explains this, it is not an optimisation problem. We solve equations 13 and 14, that is we find values of $\lambda_a$ and $\tilde{\lambda}_a$ such that those equations are satisfied. These equations are non-linear and so the values are found using the MINPACK hybrd and hybrj algorithms, implemented in Scipy.
+We have added further explanation detailing how we solve the system of non-linear equations, and have added a reference to the underlying optimisation algorithm used.
 
 \item Reviewer 2 wrote:
 \begin{quote}
