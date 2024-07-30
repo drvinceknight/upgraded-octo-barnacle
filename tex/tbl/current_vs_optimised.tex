@@ -1,17 +1,17 @@
-\begin{tabular}{lrrrrrrr}
+\begin{tabular}{lrrrrrrrrrr}
 \toprule
-Demand & Allocation & \specialcellr{Expected\\Survival} & \specialcellr{Expected A1\\Survival} & \specialcellr{Primary\\Utilisation} & \specialcellr{Secondary\\Utilisation} & \specialcellr{Mean Response\\Time (mins)} & Abandoned \\
+Demand & Allocation & \specialcellr{Expected\\Survival} & \specialcellr{Expected A1\\Survival} & \textcolor{red}{\specialcellr{Observed\\Survival}} & \textcolor{red}{\specialcellr{Observed A1\\Survival}} & \specialcellr{Primary\\Utilisation} & \specialcellr{Secondary\\Utilisation} & \specialcellr{Mean Response\\Time (mins)} &  \textcolor{red}{\specialcellr{Response Time\\StDev (mins)}} & Abandoned \\
 \midrule
-\multirow{2}{*}{\textbf{D13}} & Current   & 98.34\% & 26.05\% & 30.99\% & 22.47\% & 17.69 & 0.00\% \\
-                              & Optimised & 99.10\% & 30.99\% & 31.06\% & 18.29\% & 17.86 & 0.00\% \\
+\multirow{2}{*}{\textbf{D13}} & Current   & 98.34\% & 26.05\% & \textcolor{red}{77.83\%} & \textcolor{red}{17.80\%} & 30.99\% & 22.47\% & 17.69 & \textcolor{red}{6.98} & 0.00\% \\
+                              & Optimised & 99.10\% & 30.99\% & \textcolor{red}{77.16\%} & \textcolor{red}{16.22\%} & 31.06\% & 18.29\% & 17.86 & \textcolor{red}{7.04} & 0.00\% \\
 \midrule
-\multirow{2}{*}{\textbf{D19}} & Current   & 97.74\% & 25.17\% & 38.11\% & 32.24\% & 18.48 & 0.44\% \\
-                              & Optimised & 99.64\% & 29.85\% & 38.12\% & 27.39\% & 18.52 & 0.46\% \\
+\multirow{2}{*}{\textbf{D19}} & Current   & 97.74\% & 25.17\% & \textcolor{red}{70.01\%} & \textcolor{red}{15.42\%} & 38.11\% & 32.24\% & 18.48 & \textcolor{red}{7.73} & 0.44\% \\
+                              & Optimised & 99.64\% & 29.85\% & \textcolor{red}{69.58\%} & \textcolor{red}{14.35\%} & 38.12\% & 27.39\% & 18.52 & \textcolor{red}{7.70} & 0.46\% \\
 \midrule
-\multirow{2}{*}{\textbf{D34}} & Current   & 95.78\% & 22.75\% & 54.07\% & 52.28\% & 22.21 & 3.44\% \\
-                              & Optimised & 99.61\% & 29.59\% & 54.16\% & 49.07\% & 22.13 & 3.79\% \\
+\multirow{2}{*}{\textbf{D34}} & Current   & 95.78\% & 22.75\% & \textcolor{red}{54.37\%} & \textcolor{red}{12.53\%} & 54.07\% & 52.28\% & 22.21 & \textcolor{red}{11.56} & 3.44\% \\
+                              & Optimised & 99.61\% & 29.59\% & \textcolor{red}{54.84\%} & \textcolor{red}{12.53\%} & 54.16\% & 49.07\% & 22.13 & \textcolor{red}{11.86} & 3.79\% \\
 \midrule
-\multirow{2}{*}{\textbf{D45}} & Current   & 92.88\% & 20.67\% & 61.79\% & 60.89\% & 23.99 & 9.69\% \\
-                              & Optimised & 99.54\% & 29.36\% & 61.62\% & 56.80\% & 23.18 & 9.27\% \\
+\multirow{2}{*}{\textbf{D45}} & Current   & 92.88\% & 20.67\% & \textcolor{red}{47.22\%} & \textcolor{red}{11.86\%} & 61.79\% & 60.89\% & 23.99 & \textcolor{red}{12.92} & 9.69\% \\
+                              & Optimised & 99.54\% & 29.36\% & \textcolor{red}{48.32\%} & \textcolor{red}{11.66\%} & 61.62\% & 56.80\% & 23.18 & \textcolor{red}{12.51} & 9.27\% \\
 \bottomrule
 \end{tabular}

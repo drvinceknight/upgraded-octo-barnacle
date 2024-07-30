@@ -58,6 +58,7 @@ There were no comments by the associate editor. We would like to thank the assoc
 \begin{quote}
 ``No measures of variance are given for the simulation results in Tables 1 and 4. Especially since repeated simulation results were conducted, measures of variance should be included to investigate the statistical significance of the results.''
 \end{quote}
+Thank you for the comment, standard deviations of mean response times are now given in Table 1 and 4. This is a particularly useful inclusion as the large variance in the response times explains the discrepencies in the simulated and expected survivals.
 
 \item Reviewer 1 wrote:
 \begin{quote}
@@ -81,6 +82,7 @@ We have now added this.
 \begin{quote}
 ``There is no discussion of how well the proposed model estimates survival probabilities. This could be easily done by calculating the survival probabilites based on the simulated response times and comparing the simulated survival probabilities with the ones calculated by the MESLMHPHF. It is also not clear, why e.g. in Table 4 the expected Survival from the MESLMHPHF was used instead of the more realistic survival based on the simulation results.''
 \end{quote}
+We have now added new subsection comparing survival obtained through the MESLMHPHF and through the simulation. There are discrepancies between the two, and in the new subsection we discuss reasons for this, and offer some directions of future work that could help in alleviating some of these problems.
 
 \item Reviewer 1 wrote:
 \begin{quote}
@@ -179,11 +181,13 @@ This is an interesting suggestion. Currently we model the survival function to b
 \begin{quote}
 ``P12 5.4 – For patients that might not need to travel to a hospital, would they still need a primary vehicle after a secondary vehicle tends to them? If not the logic would not be separate entirely.''
 \end{quote}
+This is a very good point, and is similar to the situation when a primary vehicle reaches the patient before the secondary vehicle. Ideally in these cases the later vehicle would turn around and be free to pick up another patient. However one assumption of the model is that en-route communications are difficult and do not occur. We have now emphasised this in the text.
 
 \item Reviewer 2 wrote:
 \begin{quote}
 ``It seems there are two conflicting methods here, the optmisiation with the EA, which uses some averages, etc. And a more comprehensive DES simulation; however the latter is not used for the optimisation. Did you consider simulation optimisation or simheuristics to address this?''
 \end{quote}
+We did not consider using the simulation as part of the optimisation process, and is beyong the scope of the paper. However, we think this is a great idea, and have discussed this as future work in the paper, as a tool to give greater consideration to the variability in the system.
 
 \item Reviewer 2 wrote:
 \begin{quote}
@@ -217,6 +221,7 @@ Fixed throughout.
 \begin{quote}
 ``P8 Fig 3 – Include y axis scale''
 \end{quote}
+Fixed.
 
 \item Reviewer 2 wrote:
 \begin{quote}
