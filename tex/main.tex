@@ -514,6 +514,23 @@ function.}
     \end{cases}
 \end{equation}
 
+\textcolor{red}{Finding allocations that maximise survival can result in
+allocations with different behaviours to those found by minimising response
+times or maximising coverage. Coverage maximisation models are often easier to
+solve, and easier to communicate, but may not take into consideration severity
+or intensity of demand \citep{Erkut200842}. This results in a minority of
+patients, particularly those more isolated, being over-serviced, that is, having
+more relative resources allocated to their needs that the majority, at the
+expense of the majority. Minimising average response times on the other hand
+treats all patients equally, but may have the unintended outcome of disregarding
+some more further out patients whose response times would be larger that others
+regardless of the allocation. It would still disregard the severity or type of
+the patient. Allocations based on maximising survival are similar to those that
+minimise response time, overcoming the issue of over-servicing outlying
+patients, though it is still possible to disregard them completely. It has an
+advantage over minimising response times as it can account for patient severity.
+Having survival as functions of response times has the effect of weighting gains
+in response times by how valuable those gains are to a patient.}
 
 \subsection{Maximal Expected Survival Location Model with Heterogeneous
             Patients and Heterogeneous Fleet}\label{sec:meslmhphf}
@@ -624,7 +641,12 @@ example when a primary vehicle arrives after a secondary vehicle, there may
 still be a better chance of survival that the secondary vehicle only. This would
 be an interesting avenue of further research. For this work, survival functions
 will be the same for all vehicles, representing the probability of surviving
-given time to be seen by any emergency vehicle.}
+given time to be seen by any emergency vehicle.
+Note also that the survival functions are functions of $b_{pa}$, the expected
+travel time between $p$ and $a$, and do not consider the variability in the
+travel times. This will be discussed further alongside results in
+Section~\ref{sec:compare_exp_and_sim}.}
+
 
 A key consideration is the vehicle utilisations $\pi_a$ and $\tilde{\pi}_a$;
 discussed in the next subsection.
@@ -727,7 +749,7 @@ $\tilde{\lambda}_a$; and determining the secondary vehicle utilisations with
 Equation~\ref{eqn:utilisation_ratio_secondary}. These can be solved
 numerically. In our implementation this is solved using the MINPACK hybrd and
 hybrj algorithms by using Scipy's \texttt{fsolve} function
-\citep{2020SciPy-NMeth}. \textcolor{red}{These algorithms are efficient methods for finding zeros of systems of non-linear equations. They are based on the Powell hybrid method \cite{powell70}.} It should be noted that in this section we assume that
+\citep{2020SciPy-NMeth}. \textcolor{red}{These algorithms are efficient methods for finding zeros of systems of non-linear equations. They are based on the Powell hybrid method \citep{powell70}.} It should be noted that in this section we assume that
 all $\lambda_{pk}$ are static and not time-dependant, which is an assumption
 that will be used throughout the optimisation methodology, however in the
 simulation we can account for time-dependent demand.
@@ -1205,7 +1227,7 @@ Percent Abandoned & 0.00\% & 0.52\% & 0.93\% \\
 \end{table}
 
 
-\subsection{Planning for Future Demand}\label{sec:demand_scenarios}
+\subsection{Demand Scenarios}\label{sec:demand_scenarios}
 Similarly to many other cities worldwide, ambulance services in Jakarta
 anticipate that demand for services will grow in future years, not least because
 there is now a coordinated service accessible via a single common number `119'
@@ -1340,13 +1362,13 @@ four possible demand scenarios.}
 \end{table}
 
 \textcolor{red}{
-\subsection{Comparing Expected \& Simulated Survival Measures}
+\subsection{Comparing Expected \& Simulated Survival Measures}\label{sec:compare_exp_and_sim}
 In Table~\ref{tbl:current_optimal_compare} it can be seen that there is a large
 discrepancy between the expected survival, both overall and of A1 patients,
 computed using the MESLMHPHF described in Section~\ref{sec:meslmhphf} and
 calculated using the simulation. This is a consequence of the variability in
 response times, which is explicitly modelled by the simulation but not captured
-by the MESLMHPHF. As seen in the Table, the standard deviations of the response
+by the MESLMHPHF. As seen in the table, the standard deviations of the response
 times are relatively large in comparison to the mean response times, and so this
 effect would be substantial here.}
 
@@ -1355,8 +1377,9 @@ The discrepancies are exacerbated by the use of cut-off survival function curves
 for most of the patients: consider a survival function with cut-off $L$, with
 response time below $L$ the patient's chance of survival is 0, and above $L$ the
 patient's chance of survival is guaranteed. The optimisation will find a
-solution such that will ensure that the expected response time is above $L$,
-possibly as low as $L + \epsilon$, but will not attempt to push the expected
+solution aim to push the expected response time above $L$, and once this is
+reached, possibly with an expected response time as low as $L$ itself, it will
+not attempt to push the expected
 response time above this, as it will have no effect on the expected survival.
 However considering variability of mean response times, a considerable
 proportion of the response times will lie below the expected value, and so
@@ -1372,18 +1395,12 @@ that it is not only maximising \textit{expected} survival, but considers some
 percentiles of guaranteed survival. Another avenue would be to use the
 simulation explicitly in the optimisation process, incorporating the simulation
 into the objective function and using simulation-optimisation techniques to
-improve runtime efficiency. However, as discussed in Section~\ref{sec:survival},
-maximising expected survival of all patients can lead to a fairer allocation of
-resources, with difficult to reach patients being given equal consideration to
-closer, easier to reach patients. When considering the variability of travel
-times in the optimisation process, difficult to reach patients may be ignored, indistinguishable from patients who happen to sample a response time at the
-extreme tail of a given distribution curve.}
+improve runtime efficiency.}
 
 \textcolor{red}{
-Therefore, due to this interpretation of fairness of allocations, and due to the
-naive choice of travel time distributions, including difficulties in being able
-to validate such a model and the choices made, we consider only the MESLMHPHF
-objective from now on.
+Due to the naive choice of travel time distributions, including difficulties in
+being able to validate such a model and the choices made, we consider only the
+MESLMHPHF objective from now on.
 }
 
 
@@ -1603,11 +1620,20 @@ or quickly be accessed by ambulances. Results from both the optimisation and
 simulation research showed that the RRVs can help increase the overall
 survival and reduce the response times, especially crucial when responding to
 life threatening events such as cardiac arrests \citep{holmen2020shortening}.
+
 \textcolor{red}{In building the models, some assumptions or relaxations were
 made to simplify the model, and future work should investigate the effects of
 these, for example the assumption that service times are not location dependent
 is unrealistic, but relaxed here. Further developments of the model could
-consider explicitly modelling service rates using the travel time matrices.}
+consider explicitly modelling service rates using the travel time matrices.
+Another limitation identified was the lack of consideration of variability in
+travel times in the optimisation model, which cased some discrepancies between
+the simulated and expected survivals. One method to overcome this could be to
+incorporate variability directly into the MESLMHPHF objective, for example using
+percentiles instead of averages, or to optimise using the simulation as an
+objective. However in both approaches, a good estimate of travel time
+distributions would be needed, with better validation.
+}
 
 The results of our research also suggest that allocation strategies may not be
 intuitive to ambulance service managers, further emphasising the value of a
