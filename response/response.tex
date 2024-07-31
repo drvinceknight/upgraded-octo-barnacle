@@ -29,6 +29,7 @@ This document will address the specific concerns raised.
 \begin{quote}
 ``Please cite relevant, recent work published in this journal. This is by no means mandatory, but it will help to position your work in the context of research published in the journal.''
 \end{quote}
+Done.
 
 
 \item The editor wrote:
@@ -53,6 +54,7 @@ There were no comments by the associate editor. We would like to thank the assoc
 \begin{quote}
 ``No Verification \& Validation of the simulation model is described. At least some discussion regarding the validity of the model has to be included in the case study.''
 \end{quote}
+Thorough verification of the models is done by the automated code testing suits provided in the code base, a paragraph on this is now included under Section 5.5. Validation of this model was difficult, and relied on the expert opinion of our collaborators ar 118 and 119. This is now discussed in Section 6.
 
 \item Reviewer 1 wrote:
 \begin{quote}
@@ -173,11 +175,13 @@ This is an interesting suggestion. Currently we model the survival function to b
 \begin{quote}
 ``Have you given any consideration to using an exact method to solve the optimisation problem solved in Algorithm 1? Is there any alternative in the literature?''
 \end{quote}
+We did not consider using an exact method to solve this as the were so many non-linear elements to the problem, namely the objective function and the utilisation considerations. An exact method would be beyond the scope of this paper, which focusses on the non-linear objective function formulation, and simulation modelling.
 
 \item Reviewer 2 wrote:
 \begin{quote}
 ``P11 L43 – What is the rationale of using a triangular distribution for travel times? In general, what is the basis of all the travel time assumptions presented in this section?''
 \end{quote}
+A reference has now been given justifying the use of triangular distributions when little information is known. All other travel time information is given in the Appendix, where we state that travel times are derived using Google Maps API, and traffic delays found using the TomTom API.
 
 \item Reviewer 2 wrote:
 \begin{quote}
@@ -195,11 +199,13 @@ We did not consider using the simulation as part of the optimisation process, an
 \begin{quote}
 ``P15 Paragraph starting L36. Can you give more detail on the modelling of the call arrival rates? For rare specialties, and given the low usage of ambulances in Indonesia, you might not have enough data to give an accurate representation of actual demand. Especially, for future demand where visibility is increased, how will this change for example among richer/poorer parts of the city? I acknowledge it is impossible to include everything in your experiments, but how do you expect these limitations might affect your results?''
 \end{quote}
+The call arrival rates are taken directly from provided data, and reported in the Appendix. You make a good point regarding the pick-up locations with particularly low arrival rates - this is not a problem for \textbf{D13} as this is what was observed, but might result in artificially low arrival rates when multiplying up by demand. This is now discussed in the paper.
 
 \item Reviewer 2 wrote:
 \begin{quote}
 ``Could you conduct any validation of your results with real data from eg. Ambulance response times with the baseline allocation?''
 \end{quote}
+Thorough verification of the models is done by the automated code testing suits provided in the code base, a paragraph on this is now included under Section 5.5. Validation of this model was difficult, and relied on the expert opinion of our collaborators ar 118 and 119. This is now discussed in Section 6.
 
 \item Reviewer 2 wrote:
 \begin{quote}

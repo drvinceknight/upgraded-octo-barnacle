@@ -941,6 +941,9 @@ Furthermore it is assumed that travel times for each segment of the route
 (from vehicle location to patient, from patient to hospital, and from hospital
 back the the vehicle's location) follow a Triangular distribution around the
 calculated expected travel time, between 75\% and 125\% of the value.
+\textcolor{red}{A Triangular distribution is a useful distribution to use when
+not much is known about the travel times except some basic summary statistics
+\citep{robinson2014simulation}, in this case a likely range of values.}
 
 
 \subsection{Time-dependent Demand}
@@ -1054,7 +1057,7 @@ given by:
   \tilde{T}_{pak} = \max\left(\tilde{B}_{pa_2}, B_{pa_1} + G_k \right) + \tilde{F}_{pa_2}
 \end{equation}
 
-\subsection{Combined Model}
+\subsection{Combined Model}\label{sec:combined_model}
 Combining the logic presented in Sections~\ref{sec:simulation_primary}
 and~\ref{sec:simulation_secondary} in a sequential manner, with the output of
 one determining the input of the other, gives the overall simulation logic for
@@ -1067,8 +1070,25 @@ time, the percentage of abandoned calls (that is a measure of the primary
 vehicle unavailability), and the expected overall survival. Survival is
 modelled using a combination of survival function curves and hard cut-offs,
 and is described in Section~\ref{sec:survival}.
-The source code for the combined simulation, is available at \citet{zenodo_sim} and
-development took place at \url{https://github.com/MarkTuson/ambulance_simulation}.
+
+\textcolor{red}{
+Verification of a model is ensuring that the conceptual model is implemented
+correctly and without error, while validation of a model ensures that the
+conceptual model accurately represents the real system to be modelled
+\citep{robinson2014simulation}. Verifying the simulation code, alongside
+verifying the optimisation and MESLMHPHF objective function code, is done
+through automated code testing \citep{percival2014test, palmer2023implementing}.
+This includes unit testing to ensure that each sub-component works are requires,
+and is bug and error free; end to end testing, ensuring that the components
+interact together as intended; and extreme value testing ensuring that changes
+in input parameters result in sensible and expected changes in output results
+and behaviours. The testing suits are included in the open code repositories
+provided.
+}
+
+The source code for the combined simulation, is available at \citet{zenodo_sim}
+and development took place at \url{https://github.com/MarkTuson/ambulance_simulation}.
+
 
 
 
@@ -1166,9 +1186,17 @@ neighbourhoods from 1 January to 31 December 2019, before the COVID-19
 pandemic. Data from 2020-2021 was naturally heavily skewed by the pandemic,
 with significantly lower demand, and so was not considered as representative
 of a typical period for forecasting future needs, hence the decision to use
-the available 2019 demand. \textcolor{red}{APPENDIX}~\ref{apx:parameters} provides further details on the
-parameterisation of the model, including how travel time estimates were
-obtained.
+the available 2019 demand. \textcolor{red}{APPENDIX}~\ref{apx:parameters}
+provides further details on the parameterisation of the model, including how
+travel time estimates were obtained.
+\textcolor{red}{Verification of the models were discussed in
+Section~\ref{sec:combined_model}, however parameter validation for this
+particular case study is difficult, with all primary data available to us being
+used to parametrise the model, still leaving many aspects to be determined by
+expert opinion. This expert opinion however was vital in giving a basic
+validation of the model, with staff from Ambulans 118 and the 119 Emergency
+Ambulance Service in Jakarta approving model results parametrised from their
+provided data and expert opinion.}
 
 
 \subsection{Evaluating `Grid' Proposals}\label{sec:analysis_grid}
@@ -1234,9 +1262,13 @@ there is now a coordinated service accessible via a single common number `119'
 to call. This should help raise awareness and visibility of an ambulance
 service. In the case of Jakarta, certainly increased use of 119 and therefore
 increased demand would be a desired outcome and is pro-actively supported
-by the Indonesian Government. 
+by the Indonesian Government.
 
-We consider four different demand scenarios, developed by considering the
+\textcolor{red}{In other cities with more detailed data collection, statistical
+models can be used to predict future spacial demand across a city, as in
+\cite{nicoletta2022bayesian}. In the case of Jakarta, collected call data is
+not detailed enough, but we do}
+consider four different demand scenarios, developed by considering the
 result of our cross-sectional study of patients attending EDs in Jakarta
 \citep{BriceSyaribahNoor2022Esui}. As part of the survey, randomly selected
 patients arriving at each emergency department were asked whether they had
@@ -1295,7 +1327,14 @@ certainly the highest demand (\textbf{D45}) scenario is plausible in the near
 future. After discussions with our partners, it was agreed that for each of
 the scenarios we should assume that non-emergency demand (speciality B)
 remains unchanged.
-
+\textcolor{red}{Therefore, in each scenario, we multiply the call demand for
+each municipality, $\lambda_{pk}$ by $\frac{13\%}{13\%}=1$,
+$\frac{19\%}{13\%}=1.46$, $\frac{34\%}{13\%}=2.62$, and
+$\frac{45\%}{13\%}=3.46$ respectively, for all $k \in \mathcal{K}_A$,
+$p \in \mathcal{P}$. Note that for some pick-up locations $p$, $\lambda_{pk}$
+is very small, possibly zero, which is realistic in scenario \textbf{D13}, as
+that is what is observed, but may result in artificially low demand in those
+locations when using the multiplication method to scale up demand.}
 
 \subsection{Improving the Current Allocation}\label{sec:optimise_current}
 Applying the optimisation metaheuristic from Section~\ref{sec:optimising} to the
