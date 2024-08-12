@@ -1035,7 +1035,7 @@ Exact synchronicity considerations are shown in Figure~\ref{fig:sequential_logic
   abandoned in the secondary simulation (although still seen by a primary
   vehicle in the initial simulation). We assume that secondary vehicles must
   still reach the pickup locations, due to potential difficulties in
-  communication en-route. \textcolor{red}{Consider also the situation when a
+  communication en-route. \textcolor{red}{Consider a situation when a
   secondary vehicle arrives and the patient does not require a hospital, with
   better en-route communication this would mean the primary vehicle turns
   around, however without en-route communication which is assumed here, the
@@ -1082,7 +1082,7 @@ This includes unit testing to ensure that each sub-component works are requires,
 and is bug and error free; end to end testing, ensuring that the components
 interact together as intended; and extreme value testing ensuring that changes
 in input parameters result in sensible and expected changes in output results
-and behaviours. The testing suits are included in the open code repositories
+and behaviours. The testing suites are included in the open code repositories
 provided.
 }
 
@@ -1190,13 +1190,12 @@ the available 2019 demand. \textcolor{red}{APPENDIX}~\ref{apx:parameters}
 provides further details on the parameterisation of the model, including how
 travel time estimates were obtained.
 \textcolor{red}{Verification of the models were discussed in
-Section~\ref{sec:combined_model}, however parameter validation for this
-particular case study is difficult, with all primary data available to us being
-used to parametrise the model, still leaving many aspects to be determined by
-expert opinion. This expert opinion however was vital in giving a basic
-validation of the model, with staff from Ambulans 118 and the 119 Emergency
-Ambulance Service in Jakarta approving model results parametrised from their
-provided data and expert opinion.}
+Section~\ref{sec:combined_model}, we validated based on expert opinion from
+our collaborators, Ambulans 118 and the 119 Emergency Ambulance Service in
+Jakarta, where several workshops have been carried out in Indonesia where the
+model was shared and discussed. This expertise was vital in giving a basic
+validation of the model, with collaborators approving model results
+parametrised from their provided data and expert opinion.}
 
 
 \subsection{Evaluating `Grid' Proposals}\label{sec:analysis_grid}
@@ -1383,7 +1382,7 @@ using an improved allocation in comparison to the current allocation. We can
 also see that in particular A1 patients are benefiting from the improved
 allocations, as these are the patients most sensitive to small fluctuations in
 response time, due to their survival function Equation~\ref{eqn:survival_curve}.
-\textcolor{red}{There is a large discrepancy between the expected survival
+\textcolor{red}{There is a discrepancy between the expected survival
 measures calculated from the MESLMHPHF objective, and the observed survival from
 the simulation. This is discussed further in the next section.}
 It is worth noting that for the simulation based KPIs (mean response times and
@@ -1416,7 +1415,7 @@ The discrepancies are exacerbated by the use of cut-off survival function curves
 for most of the patients: consider a survival function with cut-off $L$, with
 response time below $L$ the patient's chance of survival is 0, and above $L$ the
 patient's chance of survival is guaranteed. The optimisation will find a
-solution aim to push the expected response time above $L$, and once this is
+solution aiming to push the expected response time above $L$, and once this is
 reached, possibly with an expected response time as low as $L$ itself, it will
 not attempt to push the expected
 response time above this, as it will have no effect on the expected survival.
@@ -1672,7 +1671,8 @@ incorporate variability directly into the MESLMHPHF objective, for example using
 percentiles instead of averages, or to optimise using the simulation as an
 objective. However in both approaches, a good estimate of travel time
 distributions would be needed, with better validation.
-}
+Another direction of future work is to find exact methods of solving the
+MESLMHPHF instead of relying on a metaheuristic algorithm.}
 
 The results of our research also suggest that allocation strategies may not be
 intuitive to ambulance service managers, further emphasising the value of a
