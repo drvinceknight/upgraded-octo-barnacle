@@ -1228,8 +1228,8 @@ Figure~\ref{fig:grid_allocations} show these proposed allocations.
 Running the simulation and MESLMHPHF objective function of expected survival for
 both the current and the two proposed grid allocations gives the results shown
 in Table~\ref{tbl:current_grid_results}. The simulation was run over half a
-year, with a month warm up time, over eight replications. 
-\textcolor{red}{The variability over the eight replications ...}
+year, with a month warm up time, over five replications. 
+\textcolor{red}{The variability over the replications is very small, and we have included 90\% conficence intervals around the mean response times to demonstrate this.}
 We observe that the
 two proposed grid allocations perform much worse than the current allocation as
 measured by mean response time, survival, and percentage of calls abandoned.
@@ -1244,11 +1244,12 @@ Allocation & Baseline & Grid 3km & Grid 5km \\
 Number of EAs & 81 & 70 & 71 \\
 Number of RRVs & 13 & 0 & 0 \\
 Ambulance Utilisation & 30.99\% & 36.58\% & 35.79\% \\
-RRV Utilisation & 22.47\% & - & - \\
-Mean Response Time (mins) & 17.69 & 22.29 & 24.05 \\
+RRV Utilisation & 22.47\% & - & - \\[1.5mm]
+\multirow{2}{*}{Mean Response Time (mins)} & 17.69 & 22.29 & 24.05 \\
+ & \textcolor{red}{($\pm$ 0.07)} & \textcolor{red}{($\pm$ 0.06)} & \textcolor{red}{($\pm$ 0.03)} \\[1.5mm]
 StDev Response Time (mins) & 6.98 & 8.02 & 7.94 \\
 MESLMHPHF Objective & 98.34\% & 87.95\% & 85.64\% \\
-Expected A1 Survival & 26.05\% & 13.64\% & 12.23\% \\
+MESLMHPHF A1 Objective & 26.05\% & 13.64\% & 12.23\% \\
 Percent Abandoned & 0.00\% & 0.52\% & 0.93\% \\
 \bottomrule
 \end{tabular}
@@ -1371,7 +1372,7 @@ $H$ & 200 & Number of generations.\\
 
 Table~\ref{tbl:current_optimal_compare} compares the MESLMHPHF objective
 function value and simulation derived KPIs between the current and the optimised
-allocations, for each demand scenario. It can be seen that, as expected, as
+allocations, for each demand scenario\textcolor{red}{, along with 90\% confidence intervals over the trials}. It can be seen that, as expected, as
 demand increases then utilisation of primary and secondary vehicles increase, as
 the ambulance service is busier. Similarly, mean response time increases with
 demand, this is due to the vehicles being busier, and therefore less chance that
@@ -1468,7 +1469,7 @@ vehicle type scenarios.
 
 Figures~\ref{fig:results_objective_single}-\ref{fig:results_abandoned_multiple}
 display the obtained KPIs for each of these allocations. Confidence intervals
-over the eight replications were too small to display on the plots. It can
+over the replications were too small to display on the plots. It can
 immediately be seen that increasing the resource level has a positive effect on
 all KPIs, with vehicle utilisations, mean response times, and percentage
 abandoned decreasing, and overall survival increasing. Similarly, as expected
