@@ -172,7 +172,7 @@ treatment is especially vital.
 The application of our research is focused on Indonesia, supported by an
 award for Global Challenges Research Funds (GCRF). In Indonesia, an LMIC,
 there has been very little prior work on developing an EMS strategy, driven
-by \textcolor{red}{\st{inadequate}} a lack of financial investment and human capital
+by a lack of financial investment and human capital
 \citep{plummer2017ems,pusponegoro2003terrorism,yusvirazi2018state}.
 Related research by the authors \citep{BriceSyaribahNoor2022Esui} has
 highlighted particular challenges in Indonesia as a lack of a single
@@ -241,7 +241,7 @@ the lives of those living in LMICs. This enables decision support and
 managerial insights in Indonesia, although the developed modelling framework
 could be readily applied to other locations.
 
-\textcolor{red}{There are several managerial implications for EMS providers and
+There are several managerial implications for EMS providers and
 government agencies in Jakarta and Indonesia, respectively. The findings
 emphasise the importance of adopting a dynamic and data-driven approach to
 resource allocation. The inclusion of a heterogeneous fleet, such as Rapid
@@ -253,7 +253,7 @@ variations in demand, such as the daily influx of commuters and the differing
 population densities across neighbourhoods. The research underscores the
 necessity of enhancing data collection practices to support informed
 decision-making, with the development of user-friendly decision support tools to
-assist in visualising data and predicting outcomes}
+assist in visualising data and predicting outcomes.
 
 The paper is structured as follows:
 Section~\ref{sec:litreview} gives an overview of the literature on modelling
@@ -405,7 +405,7 @@ location $a$. Also let:
         re-fuelling, re-stocking, and resting between transit jobs;
   \item $q_{pky}$ be the probability that a patient of speciality $k$ from
         pick-up location $p$ is taken to hospital $y$.
-        Note that \textcolor{red}{having} $\sum_{y \in \mathcal{Y}} q_{pky} < 1$ is possible, that is a
+        Note that having $\sum_{y \in \mathcal{Y}} q_{pky} < 1$ is possible, that is a
         patient may not go to any hospital, in which case the ambulance returns
         to their ambulance location.
 \end{itemize}
@@ -514,7 +514,7 @@ function.}
     \end{cases}
 \end{equation}
 
-\textcolor{red}{Finding allocations that maximise survival can result in
+Finding allocations that maximise survival can result in
 allocations with different behaviours to those found by minimising response
 times or maximising coverage. Coverage maximisation models are often easier to
 solve, and easier to communicate, but may not take into consideration severity
@@ -530,7 +530,7 @@ minimise response time, overcoming the issue of over-servicing outlying
 patients, though it is still possible to disregard them completely. It has an
 advantage over minimising response times as it can account for patient severity.
 Having survival as functions of response times has the effect of weighting gains
-in response times by how valuable those gains are to a patient.}
+in response times by how valuable those gains are to a patient.
 
 \subsection{Maximal Expected Survival Location Model with Heterogeneous
             Patients and Heterogeneous Fleet}\label{sec:meslmhphf}
@@ -545,8 +545,8 @@ vehicles, EAs, and secondary vehicles, RRVs), and is constructed by
 appropriately summing these survival curves, described in
 Section~\ref{sec:survival}, across the population, multiplying by ambulance
 availability where appropriate.
-\textcolor{red}{The full MESLMHPHF optimisation model is given in
-APPENDIX~\ref{apx:fullmodel}, and its components are described fully here.}
+The full MESLMHPHF optimisation model is given in
+APPENDIX~\ref{apx:fullmodel}, and its components are described fully here.
 The MESLMHPHF is given by Equation~\ref{eqn:meslmhphf}.
 
 \begin{equation}\label{eqn:meslmhphf}
@@ -591,23 +591,24 @@ and~\ref{eqn:survival_B} respectively.
 \left(1 - R _{p a\alpha}\right)\right)}
 \end{align}
 
-Here $R_{p a_1 a_2}$ and $\beta_{p a_1 a_2}$ \textcolor{red}{define an ordering
-of the ambulance locations, they} are binary variables indicating the preference
+Here $R_{p a_1 a_2}$ and $\beta_{p a_1 a_2}$ define an ordering
+of the ambulance locations, they are binary variables indicating the preference
 of sending a vehicle from one station to another, that is the dispatch rule.
 Here we use the closest or fastest vehicle, so $\beta_{p a_1 a_2}$ indicates if
 a vehicle of the same type can reach $p$ quicker from $a_1$ than $a_2$, defined
 in Equation~\ref{eqn:beta}, while $R_{p a_1 a_2}$ indicates if a primary vehicle
 at $a_1$ can reach $p$ quicker than a secondary vehicle at $a_2$, defined in
-Equation~\ref{eqn:R}. \textcolor{red}{In order for these to define an ordering
+Equation~\ref{eqn:R}. In order for these to define an ordering
 it is assumed that no two distinct ambulance locations are exactly equidistant
-from a pickup location.} Note that here these parameters are defined using
+from a pickup location. \textcolor{red}{In both Equation~\ref{eqn:beta} and~\ref{eqn:R}, $\leq$ are used rather than $<$; in Equation~\ref{eqn:beta} will be equivalent, as we assume no two ambulance locations are equidistant; while in Equation~\ref{eqn:R}, in the case of a primary and secondary vehicle having equal travel times, then the primary vehicle will have priority.}
+Note that here these parameters are defined using
 travel times, but can be generalised to account for any type of preference,
 including for example proximity, importance, or efficiency.
 
 \begin{equation}\label{eqn:beta}
 \beta_{p a_1 a_2} = \begin{cases}
     0 & \text{if } a_1 = a_2\\
-    1 & \text{if } b_{p a_1} < b_{p a_2}\\
+    1 & \text{if } b_{p a_1} \leq b_{p a_2}\\
     0 & \text{otherwise.}
 \end{cases}
 \end{equation}
@@ -628,9 +629,9 @@ part of the sum repeating the logic for the faster secondary vehicles, and the
 second part of the sum adapting that logic for primary vehicles, who will only
 be contribute the patient's survival if all faster secondary vehicles are also
 busy. These interpretations are given as annotations to the equations
-in~\textcolor{red}{APPENDIX}\ref{apx:annotated}.
+in APPENDIX~\ref{apx:annotated}.
 
-\textcolor{red}{Note that in Equations~\ref{eqn:survival_A}
+Note that in Equations~\ref{eqn:survival_A}
 and~\ref{eqn:survival_B}, the survival functions used, $s_k(t)$, are the same
 whether a primary or a secondary vehicle arrives first. This may be unrealistic,
 where primary vehicles may be better equipped than secondary vehicles to deal
@@ -645,7 +646,7 @@ given time to be seen by any emergency vehicle.
 Note also that the survival functions are functions of $b_{pa}$, the expected
 travel time between $p$ and $a$, and do not consider the variability in the
 travel times. This will be discussed further alongside results in
-Section~\ref{sec:compare_exp_and_sim}.}
+Section~\ref{sec:compare_exp_and_sim}.
 
 
 A key consideration is the vehicle utilisations $\pi_a$ and $\tilde{\pi}_a$;
@@ -697,9 +698,9 @@ location-dependent service rates would be an interesting further research
 question, potentially improving the model's performance by incorporating travel
 times into the MESLMHPHF. However, given that in the case of Jakarta the
 preferences $\beta_{p a_1 a_2}$ and $R_{p a_1 a_2}$ are themselves defined by
-travel times (Equations~\ref{eqn:beta} and~\ref{eqn:R}), this \textcolor{red}{might not have a strong impact on the results of \st{may not have much
-affect for}} this study, \textcolor{red}{as the model already gives preference to
-the locations with the shortest service times.}
+travel times (Equations~\ref{eqn:beta} and~\ref{eqn:R}), this might not have a strong impact on the results of \st{may not have much
+affect for} this study, as the model already gives preference to
+the locations with the shortest service times.
 
 \begin{figure}
     \centering
@@ -749,7 +750,8 @@ $\tilde{\lambda}_a$; and determining the secondary vehicle utilisations with
 Equation~\ref{eqn:utilisation_ratio_secondary}. These can be solved
 numerically. In our implementation this is solved using the MINPACK hybrd and
 hybrj algorithms by using Scipy's \texttt{fsolve} function
-\citep{2020SciPy-NMeth}. \textcolor{red}{These algorithms are efficient methods for finding zeros of systems of non-linear equations. They are based on the Powell hybrid method \citep{powell70}.} It should be noted that in this section we assume that
+\citep{2020SciPy-NMeth}. These algorithms are efficient methods for finding zeros of systems of non-linear equations. 
+They are based on the Powell hybrid method \citep{powell70}. It should be noted that in this section we assume that
 all $\lambda_{pk}$ are static and not time-dependant, which is an assumption
 that will be used throughout the optimisation methodology, however in the
 simulation we can account for time-dependent demand.
@@ -796,7 +798,7 @@ generations. The metaheuristic is described in Algorithm~\ref{alg:heuristic}.
 \begin{algorithmic}[1]
 \State Create a population of $N$ random allocations ($Z_a$, $\tilde{Z}_a$)\;
 \For{$i \leftarrow 0$ \algorithmicto $H$}
-  \State Rank the population \textcolor{red}{by decreasing expected survival} according to Equation~\ref{eqn:meslmhphf}\;
+  \State Rank the population by decreasing expected survival according to Equation~\ref{eqn:meslmhphf}\;
   \State Keep the top $\kappa$ solutions\;
   \State $m \leftarrow \lceil m_0 - \min\left(m_0, i \times c\right)\rceil$\;
   \For{$j \leftarrow 0$ \algorithmicto $N - \kappa$}
@@ -941,9 +943,9 @@ Furthermore it is assumed that travel times for each segment of the route
 (from vehicle location to patient, from patient to hospital, and from hospital
 back the the vehicle's location) follow a Triangular distribution around the
 calculated expected travel time, between 75\% and 125\% of the value.
-\textcolor{red}{A Triangular distribution is a useful distribution to use when
+A Triangular distribution is a useful distribution to use when
 not much is known about the travel times except some basic summary statistics
-\citep{robinson2014simulation}, in this case a likely range of values.}
+\citep{robinson2014simulation}, in this case a likely range of values.
 
 
 \subsection{Time-dependent Demand}
@@ -987,14 +989,14 @@ adaptations.
 
 This is possible as there are no synchronicity issues between the two
 components. Primary vehicles operate independently of secondary vehicles, that
-is\textcolor{red}{,} the way primary vehicles respond to a patient is unaffected by the presence
+is, the way primary vehicles respond to a patient is unaffected by the presence
 or lack of a secondary vehicle.
 Therefore, primary vehicle logic is not compromised by simulating primary
 vehicles in isolation.
 Secondary vehicles are impacted by the behaviour of primary vehicles, they
 must remain with the patient until the primary vehicle arrives, and so must be
 simulated after the simulation of primary vehicles, taking as inputs the exact
-list of events that occurred. That is\textcolor{red}{,} the logic of the secondary vehicles is
+list of events that occurred. That is, the logic of the secondary vehicles is
 determined by observing the actions of primary vehicles and reacting to them.
 Simulation results are combined for each individual patient, to determine
 their response time caused by either primary or secondary vehicles.
@@ -1035,12 +1037,12 @@ Exact synchronicity considerations are shown in Figure~\ref{fig:sequential_logic
   abandoned in the secondary simulation (although still seen by a primary
   vehicle in the initial simulation). We assume that secondary vehicles must
   still reach the pickup locations, due to potential difficulties in
-  communication en-route. \textcolor{red}{Consider a situation when a
+  communication en-route. Consider a situation when a
   secondary vehicle arrives and the patient does not require transportation to
   a hospital, with better en-route communication this would mean the primary
   vehicle turns around, however without en-route communication which is
   assumed here, the primary vehicle must still reach the patient pick-up
-  location.}
+  location.
 \end{itemize}
 
 Therefore job service times for secondary vehicles, $\tilde{T}_{pak}$, are
@@ -1072,7 +1074,6 @@ vehicle unavailability), and the expected overall survival. Survival is
 modelled using a combination of survival function curves and hard cut-offs,
 and is described in Section~\ref{sec:survival}.
 
-\textcolor{red}{
 Verification of a model is ensuring that the conceptual model is implemented
 correctly and without error, while validation of a model ensures that the
 conceptual model accurately represents the real system to be modelled
@@ -1085,7 +1086,6 @@ interact together as intended; and extreme value testing ensuring that changes
 in input parameters result in sensible and expected changes in output results
 and behaviours. The testing suites are included in the open code repositories
 provided.
-}
 
 The source code for the combined simulation, is available at \citet{zenodo_sim}
 and development took place at \url{https://github.com/MarkTuson/ambulance_simulation}.
@@ -1142,7 +1142,8 @@ patient `specialities' ($k \in \mathcal{K}$) were agreed based on clinical need
   \item \textbf{A1 - High priority emergency patients}: critical patients who
   require immediate life-saving assistance with a target ambulance response
   time of 8 minutes. In our data set there were 168 identified calls that met
-  this criterion.
+        this criterion. \textcolor{red}{As in~\cite{Knight2012918},
+        equation~(\ref{eqn:survival_curve}) is here used to measure survival of these patients.}
   \item \textbf{A2 - Other emergency patients}: urgent patients that require
   assistance with a target response time of 15 minutes. In our data set there
   were 23,784 calls of this type.
@@ -1187,16 +1188,16 @@ neighbourhoods from 1 January to 31 December 2019, before the COVID-19
 pandemic. Data from 2020-2021 was naturally heavily skewed by the pandemic,
 with significantly lower demand, and so was not considered as representative
 of a typical period for forecasting future needs, hence the decision to use
-the available 2019 demand. \textcolor{red}{APPENDIX}~\ref{apx:parameters}
+the available 2019 demand. APPENDIX~\ref{apx:parameters}
 provides further details on the parameterisation of the model, including how
 travel time estimates were obtained.
-\textcolor{red}{Verification of the models were discussed in
+Verification of the models were discussed in
 Section~\ref{sec:combined_model}, we validated based on expert opinion from
 our collaborators, Ambulans 118 and the 119 Emergency Ambulance Service in
 Jakarta, where several workshops have been carried out in Indonesia where the
 model was shared and discussed. This expertise was vital in giving a basic
 validation of the model, with collaborators approving model results
-parametrised from their provided data and expert opinion.}
+parametrised from their provided data and expert opinion.
 
 
 \subsection{Evaluating `Grid' Proposals}\label{sec:analysis_grid}
@@ -1228,7 +1229,9 @@ Figure~\ref{fig:grid_allocations} show these proposed allocations.
 Running the simulation and MESLMHPHF objective function of expected survival for
 both the current and the two proposed grid allocations gives the results shown
 in Table~\ref{tbl:current_grid_results}. The simulation was run over half a
-year, with a month warm up time, over eight replications. We observe that the
+year, with a month warm up time, over five replications. 
+\textcolor{red}{The variability over the replications is very small, and we have included 90\% conficence intervals around the mean response times to demonstrate this.}
+We observe that the
 two proposed grid allocations perform much worse than the current allocation as
 measured by mean response time, survival, and percentage of calls abandoned.
 This is expected as vehicle numbers are lower under the new proposals, as well
@@ -1242,11 +1245,12 @@ Allocation & Baseline & Grid 3km & Grid 5km \\
 Number of EAs & 81 & 70 & 71 \\
 Number of RRVs & 13 & 0 & 0 \\
 Ambulance Utilisation & 30.99\% & 36.58\% & 35.79\% \\
-RRV Utilisation & 22.47\% & - & - \\
-Mean Response Time (mins) & 17.69 & 22.29 & 24.05 \\
-\textcolor{red}{StDev Response Time (mins)} & \textcolor{red}{6.98} & \textcolor{red}{8.02} & \textcolor{red}{7.94} \\
+RRV Utilisation & 22.47\% & - & - \\[1.5mm]
+\multirow{2}{*}{Mean Response Time (mins)} & 17.69 & 22.29 & 24.05 \\
+ & \textcolor{red}{($\pm$ 0.07)} & \textcolor{red}{($\pm$ 0.06)} & \textcolor{red}{($\pm$ 0.03)} \\[1.5mm]
+StDev Response Time (mins) & 6.98 & 8.02 & 7.94 \\
 MESLMHPHF Objective & 98.34\% & 87.95\% & 85.64\% \\
-Expected A1 Survival & 26.05\% & 13.64\% & 12.23\% \\
+MESLMHPHF A1 Objective & 26.05\% & 13.64\% & 12.23\% \\
 Percent Abandoned & 0.00\% & 0.52\% & 0.93\% \\
 \bottomrule
 \end{tabular}
@@ -1264,10 +1268,10 @@ service. In the case of Jakarta, certainly increased use of 119 and therefore
 increased demand would be a desired outcome and is pro-actively supported
 by the Indonesian Government.
 
-\textcolor{red}{In other cities with more detailed data collection, statistical
+In other cities with more detailed data collection, statistical
 models can be used to predict future spacial demand across a city, as in
 \cite{nicoletta2022bayesian}. In the case of Jakarta, collected call data is
-not detailed enough, but we do}
+not detailed enough, but we do
 consider four different demand scenarios, developed by considering the
 result of our cross-sectional study of patients attending EDs in Jakarta
 \citep{BriceSyaribahNoor2022Esui}. As part of the survey, randomly selected
@@ -1327,14 +1331,14 @@ certainly the highest demand (\textbf{D45}) scenario is plausible in the near
 future. After discussions with our partners, it was agreed that for each of
 the scenarios we should assume that non-emergency demand (speciality B)
 remains unchanged.
-\textcolor{red}{Therefore, in each scenario, we multiply the call demand for
+Therefore, in each scenario, we multiply the call demand for
 each municipality, $\lambda_{pk}$ by $\frac{13\%}{13\%}=1$,
 $\frac{19\%}{13\%}=1.46$, $\frac{34\%}{13\%}=2.62$, and
 $\frac{45\%}{13\%}=3.46$ respectively, for all $k \in \mathcal{K}_A$,
 $p \in \mathcal{P}$. Note that for some pick-up locations $p$, $\lambda_{pk}$
 is very small, possibly zero, which is realistic in scenario \textbf{D13}, as
 that is what is observed, but may result in artificially low demand in those
-locations when using the multiplication method to scale up demand.}
+locations when using the multiplication method to scale up demand.
 
 \subsection{Improving the Current Allocation}\label{sec:optimise_current}
 Applying the optimisation metaheuristic from Section~\ref{sec:optimising} to the
@@ -1343,7 +1347,7 @@ the four scenarios described in Section~\ref{sec:demand_scenarios}. The
 hyper-parameters used for this optimisation algorithm throughout this study are
 given in Table~\ref{tbl:hyperparameters}, which include approximations for the
 average service times of primary and secondary vehicles derived from the initial
-simulation model. \textcolor{red}{APPENDIX}~\ref{apx:hyperparameters} shows some initial explorations on
+simulation model. APPENDIX~\ref{apx:hyperparameters} shows some initial explorations on
 the hyper-parameter choices, giving confidence that the chosen parameters, with
 a large enough number of iterations $N$, are sufficient to find allocations
 that perform well.
@@ -1369,25 +1373,35 @@ $H$ & 200 & Number of generations.\\
 
 Table~\ref{tbl:current_optimal_compare} compares the MESLMHPHF objective
 function value and simulation derived KPIs between the current and the optimised
-allocations, for each demand scenario. It can be seen that, as expected, as
+allocations, for each demand scenario\textcolor{red}{, along with 90\% confidence intervals over the trials}. It can be seen that, as expected, as
 demand increases then utilisation of primary and secondary vehicles increase, as
 the ambulance service is busier. Similarly, mean response time increases with
 demand, this is due to the vehicles being busier, and therefore less chance that
 the most optimally placed vehicle is dispatched. This is confirmed by the
 percentage of calls abandoned increasing with demand, showing ambulance
 unavailability.
-Looking at the expected survival, that is the value of the MESLMHPHF objective
-function, we see that using an better allocation does increase the survival,
-and that the drop in survival due to demand increases is not as severe when
-using an improved allocation in comparison to the current allocation. We can
-also see that in particular A1 patients are benefiting from the improved
+
+\textcolor{red}{The value of the MESLMHPHF objective function and
+the observed survival, as given by the simulation model, do not match.
+Section~\ref{sec:compare_exp_and_sim} discusses this in more detail.}
+
+\textcolor{red}{As desired, the optimisation heuristic has indeed improved the
+allocation as measured by the MESLMHPHF objective function. In particular A1 patients 
+are benefiting from the improved
 allocations, as these are the patients most sensitive to small fluctuations in
 response time, due to their survival function Equation~\ref{eqn:survival_curve}.
-\textcolor{red}{There is a discrepancy between the expected survival
-measures calculated from the MESLMHPHF objective, and the observed survival from
-the simulation. This is discussed further in the next section.}
+Also, using a better allocation does increase the survival,
+and that the drop in survival due to demand increases is not as severe when
+using an improved allocation in comparison to the current allocation, although
+more numerical evidence would be helpful here. This
+improved robustness 
+not only validates the heuristic but also highlights
+the research contribution of Section~\ref{sec:utilisation} as an approach to
+handle the recursive relationship between an allocation \(x\) and the utilisation
+rates.}
+
 It is worth noting that for the simulation based KPIs (mean response times and
-percent abandoned), there is not too much
+percent abandoned), there is not much
 difference between the currently used allocation and the better allocation,
 showing that these KPIs may not be good approximations of survival.
 
@@ -1400,7 +1414,6 @@ four possible demand scenarios.}
 \label{tbl:current_optimal_compare}
 \end{table}
 
-\textcolor{red}{
 \subsection{Comparing Expected \& Simulated Survival Measures}\label{sec:compare_exp_and_sim}
 In Table~\ref{tbl:current_optimal_compare} it can be seen that there is a large
 discrepancy between the expected survival, both overall and of A1 patients,
@@ -1409,9 +1422,8 @@ calculated using the simulation. This is a consequence of the variability in
 response times, which is explicitly modelled by the simulation but not captured
 by the MESLMHPHF. As seen in the table, the standard deviations of the response
 times are relatively large in comparison to the mean response times, and so this
-effect would be substantial here.}
+effect would be substantial here.
 
-\textcolor{red}{
 The discrepancies are exacerbated by the use of cut-off survival function curves
 for most of the patients: consider a survival function with cut-off $L$, with
 response time below $L$ the patient's chance of survival is 0, and above $L$ the
@@ -1425,22 +1437,19 @@ proportion of the response times will lie below the expected value, and so
 possibly below $L$, resulting in worse survival probabilities, as observed in
 Table~\ref{tbl:current_optimal_compare}. Therefore the distributions chosen to
 model travel times can have a large impact on the survival measures, in this
-case the naive Triangular distribution.}
+case the naive Triangular distribution.
 
-\textcolor{red}{
 This leads to a number of avenues of future work to improve this and overcome
 this effect. Variability could be explicitly modelled within the MESLMHPHF, such
 that it is not only maximising \textit{expected} survival, but considers some
 percentiles of guaranteed survival. Another avenue would be to use the
 simulation explicitly in the optimisation process, incorporating the simulation
 into the objective function and using simulation-optimisation techniques to
-improve runtime efficiency.}
+improve runtime efficiency.
 
-\textcolor{red}{
 Due to the naive choice of travel time distributions, including difficulties in
 being able to validate such a model and the choices made, we consider only the
 MESLMHPHF objective from now on.
-}
 
 
 \subsection{Finding Better Allocations for Any Resource Level}\label{sec:vehicle_numbers}
@@ -1461,7 +1470,7 @@ vehicle type scenarios.
 
 Figures~\ref{fig:results_objective_single}-\ref{fig:results_abandoned_multiple}
 display the obtained KPIs for each of these allocations. Confidence intervals
-over the eight replications were too small to display on the plots. It can
+over the replications were too small to display on the plots. It can
 immediately be seen that increasing the resource level has a positive effect on
 all KPIs, with vehicle utilisations, mean response times, and percentage
 abandoned decreasing, and overall survival increasing. Similarly, as expected
@@ -1480,7 +1489,7 @@ increasing the demand of emergency calls has a negative impact on all KPIs.
 \label{fig:results_objective_multiple}
 \end{subfigure}
 \end{center}
-\caption{MESLMHPHF objective expected survival results. \textcolor{red}{(Note that Figures~\ref{fig:results_objective_single} and~\ref{fig:results_objective_multiple} do not have the same y-axis scale in order to keep the data points visible.)}}
+\caption{MESLMHPHF objective expected survival results. (Note that Figures~\ref{fig:results_objective_single} and~\ref{fig:results_objective_multiple} do not have the same y-axis scale in order to keep the data points visible.)}
 \label{fig:results_objective}
 \end{figure}
 
@@ -1566,7 +1575,11 @@ increases ambulance utilisation, and so decreases availability, resulting in
 an increase in abandoned calls. However, introducing secondary vehicles also
 results in a decrease in the mean response time, and a large increase in the
 expected survival, especially those of speciality A1.
-\textcolor{red}{In fact, it can be seen from Figure~\ref{fig:results_a1survival_multiple} that when using multiple vehicle types the survival of A1 patients plateaus as the resource level increases, indicating that the system has reached an upper bound on the survival of A1 patients. This is corroborated by considering the survival function of A1 patients given in Equation~\ref{eqn:survival_curve}, where even if all patients were seen immediately a survival of 43.5\% would be expected, and so accounting for even a minimum travel time to the patients an observed plateau value of 32\% could not be improved upon by adding more resource level.}
+In fact, it can be seen from Figure~\ref{fig:results_a1survival_multiple} that when using multiple vehicle types the survival of 
+A1 patients plateaus as the resource level increases, indicating that the system has reached an upper bound on the survival of A1 patients. 
+This is corroborated by considering the survival function of A1 patients given in Equation~\ref{eqn:survival_curve}, where even if all 
+patients were seen immediately a survival of 43.5\% would be expected, and so accounting for even a minimum travel time to the patients an 
+observed plateau value of 32\% could not be improved upon by adding more resource level.
 
 An interesting phenomenon occurs when looking at
 Figure~\ref{fig:results_response_multiple}. Here it seems that, when using
@@ -1660,7 +1673,7 @@ simulation research showed that the RRVs can help increase the overall
 survival and reduce the response times, especially crucial when responding to
 life threatening events such as cardiac arrests \citep{holmen2020shortening}.
 
-\textcolor{red}{In building the models, some assumptions or relaxations were
+In building the models, some assumptions or relaxations were
 made to simplify the model, and future work should investigate the effects of
 these, for example the assumption that service times are not location dependent
 is unrealistic, but relaxed here. Further developments of the model could
@@ -1673,7 +1686,7 @@ percentiles instead of averages, or to optimise using the simulation as an
 objective. However in both approaches, a good estimate of travel time
 distributions would be needed, with better validation.
 Another direction of future work is to find exact methods of solving the
-MESLMHPHF instead of relying on a metaheuristic algorithm.}
+MESLMHPHF instead of relying on a metaheuristic algorithm.
 
 The results of our research also suggest that allocation strategies may not be
 intuitive to ambulance service managers, further emphasising the value of a
@@ -1756,7 +1769,6 @@ Dr Winarto, Executive Director of the 119 Ambulance Service (now PK3D) in Jakart
 
 \newpage
 
-\textcolor{red}{
 \section{Full MESLMHPHF Optimisation Model}\label{apx:fullmodel}
 Decision variables: $Z_a$, $\tilde{Z}_a$,
 Maximise:
@@ -1794,7 +1806,6 @@ Z_a, \tilde{Z}_a \in \mathbb{N_0}
 Z_a + \frac{1}{3} \tilde{Z}_a = \mathcal{L}
 \end{equation*}
 where $\mathcal{L}$ is the resource level.
-}
 
 \section{Model Parameters}\label{apx:parameters}
 Call arrival rates $\lambda_{pk}$ are derived from 2019 demand data split by
