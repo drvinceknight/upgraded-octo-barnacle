@@ -600,14 +600,15 @@ in Equation~\ref{eqn:beta}, while $R_{p a_1 a_2}$ indicates if a primary vehicle
 at $a_1$ can reach $p$ quicker than a secondary vehicle at $a_2$, defined in
 Equation~\ref{eqn:R}. In order for these to define an ordering
 it is assumed that no two distinct ambulance locations are exactly equidistant
-from a pickup location. Note that here these parameters are defined using
+from a pickup location. \textcolor{red}{In both Equation~\ref{eqn:beta} and~\ref{eqn:R}, $\leq$ are used rather than $<$; in Equation~\ref{eqn:beta} will be equivalent, as we assume no two ambulance locations are equidistant; while in Equation~\ref{eqn:R}, in the case of a primary and secondary vehicle having equal travel times, then the primary vehicle will have priority.}
+Note that here these parameters are defined using
 travel times, but can be generalised to account for any type of preference,
 including for example proximity, importance, or efficiency.
 
 \begin{equation}\label{eqn:beta}
 \beta_{p a_1 a_2} = \begin{cases}
     0 & \text{if } a_1 = a_2\\
-    1 & \text{if } b_{p a_1} < b_{p a_2}\\
+    1 & \text{if } b_{p a_1} \leq b_{p a_2}\\
     0 & \text{otherwise.}
 \end{cases}
 \end{equation}

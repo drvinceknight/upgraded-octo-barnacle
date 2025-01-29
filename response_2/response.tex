@@ -48,149 +48,85 @@ how we have addressed the remaining points raised by reviewer 1.
 \subsection{Comments from Reviewer 1}
 
 \begin{itemize}
-
-\item Reviewer 1's comment from the first review:
-
-\begin{quote}
-``No measures of variance are given for the simulation results in Tables 1
-and 4. Especially since repeated simulation results were conducted, measu-
-res of variance should be included to investigate the statistical significance
-of the results.''
-\end{quote}
-
-\item Our response to reviewer 1's comment from the first review:
-
-Thank you for the comment, standard deviations of mean response times are now
-given in Table 1 and 4. This is a particularly useful inclusion as the
-large variance in the response times explains the discrepencies in the
-simulated and expected survivals.
-
-\item Review 1's new comment:
-
-\begin{quote}
-Not addressed: The standard deviation of the response time was inclu-
-ded, but no information about the variance of the results over the eight
-replications was given. To obtain knowledge about the reliability of the
-simulation results, some information should be given about how much the
-simulation results differed between the eight replications mentioned on
-page 17.
-\end{quote}
-
-A short discussion about the variability over the repetitions (including
-variance) has now been included. 
-% TODO VK: We need to do this, I believe it is only Geraint who has the data.
-
-\item Reviewer 1's comment from the first review:
-
-\begin{quote}
-``Unclear, why the subchapter 4.1 on survival functions is necessary, sin-
-ce traditional coverage targets are used in the case study and the model
-formulation does not depend on characteristics of the survival functions.
-While survival functions are an important performance metric in the re-
-viewers’ opinion, it is not clear why the reader needs this information to
-follow the remainder of the pape.''
-\end{quote}
-
-\item Our response to reviewer 1's comment from the first review:
-
-We disagree with the reviewer here. In the case study, traditional targets such
-a mean response times are reported alongside survival measures, based on
-the survival functions. However, a key part of the paper is the
-optimisation process, and all scenarios compared are `optimised'
-scenarios that result from this process. The objective function of the
-optimisation process maximises survival, based on survival functions.
-This is evnidenced in Equations 6 and 7, which are component parts of
-the objective function given in Equation 5. Therefore the survival
-functions are central to the work presented.
-
-\item Review 1's new comment:
-
-\begin{quote}
-''Not addressed: It was expanded upon why survival functions can be sui-
-table performance metrics. In the case study however, coverage targets
-were used (8 min target for A1 patients, 15 min target for A2 patients
-and 60 min target for B patients). It is therefore still unclear, why the
-reader needs the information in chapter 4.1. Additionally, there is no dis-
-cussion as to why coverage targets were chosen in the case study, after
-it was argued, that survival functions can solve some drawbacks of using
-coverage targets.``
-\end{quote}
-
-and
-
-\begin{quote}
-    ``
-There is contradicting information about which survival functions were
-used in the case study. On page 15 and 16, response time targets for the
-different categories are listed. This implies to the reader, that step-wise
-survival functions, in other words coverage targets, were used in the case
-study. On page 19, line 44 it is stated, that Equation 3 was used as the
-survival function for A1 patients. It needs to be clarified, which survival
-functions were used in the MESLMHPHF in the case study both for the
-optimization metaheuristic and the evaluation of the results.
-    ''
-\end{quote}
-
-\item Our response:
-
-We have added a sentence to the text to clarify that despite the policy target
-of 8 minutes for the A1 patients, we have in fact used the survival function of
-equation (3) for A1 patients. This was not explicit and we appreciate the
-reviewer insisting this point.
-
-\item Reviewer 1's comment:
-
-\begin{quote}
-``The simulated survival probabilities in Table 4 show, that the survival for
-A1 patients was not improved in any of the four scenarios in the simu-
-lation. As the simulation model is a more realistic model of the actual
-1
-EMS system in comparison to the MESLMHPHF, the simulated survi-
-val probabilities carry more weight in interpreting the results compared
-to the expected survival probabilities calculated with the MESLMHPHF.
-On page 19, line 42 - 44 however it is stated, that ‘in particular A1 pati-
-ents are benefitting from the improved allocations’. It is unclear, how the
-authors draw this conclusion, when the simulation results show worse or
-equal survival probabilities for A1 patients in all scenarios.''
-\end{quote}
-
-The reviewer raises a good point here. We have modified the text to hopefully
-clarify that:
-
-\begin{itemize}
-    \item The sentence regard A1 patients meant to reflect more on the
-        efficiency and accuracy of the optimisation heuristic which we find is
-        one of the main contributions of this paper (specifically the novel
-        approach used to deal with the circular nature of utilisation and
-        allocation).
-    \item The optimised allocation give more robust allocations under increasing
-        demand although we admit that there is not enough numerical evidence to
-        be sure of this effect.
-\end{itemize}
-
-Furthermore we have more explicitly referred to our explanation about the cause
-of this discrepancy.
-
-Fundamentally, again, the reviewer raises a valid and interesting avenue for investigation and
-one that we feel
-could not be precisely considered without the work in this paper. We hope to
-tackle building a more accurate objective function, that better captures the
-stochastic effects, that could be then optimised with our novel algorithm. This,
-does not however fit in this paper. If the reviewer would like us to make that
-more explicit and clear in the text we would be happy to follow any guidance
-they feel is necessary.
-
-\item Reviewer 1's comment:
+    \item Reviewer 1's comment from the first review:
 
     \begin{quote}
-        ``      Equations 8 and 9: It is stated, that \(\beta_{pa_1a_2}\) indicates, that a vehicle from
-        \(a_1\) can reach \(p\) quicker, than a vehicle from \(a_2\). The equations 8 and 9
-        however use \(\leq\) and not \(<\) , which is not consistent with the description.
-Has been fixed for \(\beta_{pa_1a_2}\) in Equation 8, but not for \(R_{pa_1a_2}\) in Equation
-9. ''
+    ``No measures of variance are given for the simulation results in Tables 1 and 4. Especially since repeated simulation results were conducted, measures of variance should be included to investigate the statistical significance of the results.''
     \end{quote}
-    This has been fixed.
-    % TODO Check with Geraint that this is correct.
+
+    \begin{itemize}
+        \item Our response to reviewer 1's comment from the first review:
+
+        Thank you for the comment, standard deviations of mean response times are no
+        given in Table 1 and 4. This is a particularly useful inclusion as the
+        large variance in the response times explains the discrepencies in the
+        simulated and expected survivals.
+
+        \item Review 1's new comment:
+
+        \begin{quote}
+        ``Not addressed: The standard deviation of the response time was included, but no information about the variance of the results over the eight
+        replications was given. To obtain knowledge about the reliability of the
+        simulation results, some information should be given about how much the
+        simulation results differed between the eight replications mentioned on
+        page 17.''
+        \end{quote}
+
+        Thank you for the comment. Firstly, this highlighted a small error in the paper, five repetitions were conducted rather than eight; this is found in the source code given in \url{https://github.com/MarkTuson/ambulance_simulation}. In the updated manuscript 90\% confidence intervals for some KPIs have now been included in Tables 1 and 4, namely the simulated survival and mean response times. A short comment about the variability over the repetitions has now been included. The variance over the repetitions is very small, so small that as mentioned in the original draft of the manuscript, confidence intervals were not able to be visualised on the plot in Figures 10 onwards.
+    \end{itemize}
+
+    \item Reviewer 1's comment from the first review:
+
+    \begin{quote}
+    ``Unclear, why the subchapter 4.1 on survival functions is necessary, since traditional coverage targets are used in the case study and the model formulation does not depend on characteristics of the survival functions. While survival functions are an important performance metric in the reviewers' opinion, it is not clear why the reader needs this information to follow the remainder of the pape.''
+    \end{quote}
+    
+    \begin{itemize}
+        \item Our response to reviewer 1's comment from the first review:
+
+        We disagree with the reviewer here. In the case study, traditional targets such a mean response times are reported alongside survival measures, based on the survival functions. However, a key part of the paper is the optimisation process, and all scenarios compared are `optimised' scenarios that result from this process. The objective function of the optimisation process maximises survival, based on survival functions. This is evnidenced in Equations 6 and 7, which are component parts of the objective function given in Equation 5. Therefore the survival functions are central to the work presented.
+
+        \item Review 1's new comment:
+
+        \begin{quote}
+        ``Not addressed: It was expanded upon why survival functions can be suitable performance metrics. In the case study however, coverage targets were used (8 min target for A1 patients, 15 min target for A2 patients and 60 min target for B patients). It is therefore still unclear, why the reader needs the information in chapter 4.1. Additionally, there is no discussion as to why coverage targets were chosen in the case study, after it was argued, that survival functions can solve some drawbacks of using coverage targets.``
+        \end{quote}
+
+        and
+
+        \begin{quote}
+        ``There is contradicting information about which survival functions were used in the case study. On page 15 and 16, response time targets for the different categories are listed. This implies to the reader, that step-wise survival functions, in other words coverage targets, were used in the case study. On page 19, line 44 it is stated, that Equation 3 was used as the survival function for A1 patients. It needs to be clarified, which survival functions were used in the MESLMHPHF in the case study both for the optimization metaheuristic and the evaluation of the results.''
+        \end{quote}
+
+        \item Our response:
+
+        We have added a sentence to the text to clarify that despite the policy target of 8 minutes for the A1 patients, we have in fact used the survival function of equation (3) for A1 patients. This was not explicit and we appreciate the reviewer insisting this point.
+
+    \end{itemize}
+
+    \item Reviewer 1's comment:
+
+    \begin{quote}
+    ``The simulated survival probabilities in Table 4 show, that the survival for A1 patients was not improved in any of the four scenarios in the simulation. As the simulation model is a more realistic model of the actual EMS system in comparison to the MESLMHPHF, the simulated survival probabilities carry more weight in interpreting the results compared to the expected survival probabilities calculated with the MESLMHPHF. On page 19, line 42 - 44 however it is stated, that ‘in particular A1 patients are benefitting from the improved allocations’. It is unclear, how the authors draw this conclusion, when the simulation results show worse or equal survival probabilities for A1 patients in all scenarios.''
+    \end{quote}
+
+    The reviewer raises a good point here. We have modified the text to hopefully clarify that:
+
+    \begin{itemize}
+        \item The sentence regard A1 patients meant to reflect more on the efficiency and accuracy of the optimisation heuristic which we find is one of the main contributions of this paper (specifically the novel approach used to deal with the circular nature of utilisation and allocation).
+        \item The optimised allocation give more robust allocations under increasing demand although we admit that there is not enough numerical evidence to be sure of this effect.
+    \end{itemize}
+
+    Furthermore we have more explicitly referred to our explanation about the cause of this discrepancy.
+
+    Fundamentally, again, the reviewer raises a valid and interesting avenue for investigation and one that we feel could not be precisely considered without the work in this paper. We hope to tackle building a more accurate objective function, that better captures the stochastic effects, that could be then optimised with our novel algorithm. This, does not however fit in this paper. If the reviewer would like us to make that more explicit and clear in the text we would be happy to follow any guidance they feel is necessary.
+
+  \item Reviewer 1's comment:
+    \begin{quote}
+    ``Equations 8 and 9: It is stated, that \(\beta_{pa_1a_2}\) indicates, that a vehicle from \(a_1\) can reach \(p\) quicker, than a vehicle from \(a_2\). The equations 8 and 9 however use \(\leq\) and not \(<\) , which is not consistent with the description. Has been fixed for \(\beta_{pa_1a_2}\) in Equation 8, but not for \(R_{pa_1a_2}\) in Equation 9.''
+    \end{quote}
+    
+    We have reverted both to be $\leq$, to correspond with the source code. We have added and explanatory note to the text explaining the edge cases. In Equation 8 there is no difference between using $<$ and $\leq$, as we assume no equidistant ambulance stations; while in Equation 9 using $\leq$ is necessary as primary vehicles take priority over secondary vehicles in the event of a tie.
 
 \end{itemize}
 
